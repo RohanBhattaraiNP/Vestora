@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vestora Finance - Decentralized Stock Exchange</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.css">
+</head>
+
+<body>
+    <div class="particles-container">
+        <div class="bg-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="gradient-mesh"></div>
+        <div class="grid-pattern"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Vestora Finance Logo" class="logo-img">
+            <h1>Vestora Finance</h1>
+        </div>
+        <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#waitlist" class="btn-primary">Join Waitlist</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Future of <span class="highlight">Stock Trading</span> is Decentralized</h1>
+            <p>Vestora Finance enables anyone, anywhere in the world to buy and own any stock globally through our
+                revolutionary blockchain-powered platform.</p>
+            <p class="hero-tagline">The future is real-world asset tokenization. Trade any stock globally with full
+                ownership rights.</p>
+            <div class="cta-buttons">
+                <a href="#waitlist" class="btn-primary">Join Waitlist</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Dashboard Preview 
+    <section class="dashboard-preview">
+        <div class="container">
+            <h2>Experience the <span class="highlight">Platform</span></h2>
+            <p class="section-description">Our intuitive dashboard gives you complete control over your global stock
+                portfolio</p>
+
+            <div class="dashboard-container">
+                <div class="dashboard-tabs">
+                    <div class="tab active" data-tab="portfolio">Portfolio</div>
+                    <div class="tab" data-tab="trade">Trade</div>
+                    <div class="tab" data-tab="orders">Orders</div>
+                    <div class="tab" data-tab="deposit">Deposit</div>
+                    <div class="tab" data-tab="analytics">Analytics</div>
+                </div>
+
+               
+                <div class="dashboard-content active" id="portfolio-tab">
+                    <div class="portfolio-overview">
+                        <div class="portfolio-card">
+                            <h3>Total Portfolio Value</h3>
+                            <div class="value">$24,875.65</div>
+                            <div class="change positive">+3.2% today</div>
+                        </div>
+                        <div class="portfolio-card">
+                            <h3>Available Cash</h3>
+                            <div class="value">$5,234.89</div>
+                            <button class="btn-primary">Deposit Funds</button>
+                        </div>
+                        <div class="portfolio-card">
+                            <h3>Today's P&L</h3>
+                            <div class="value positive">+$892.45</div>
+                            <div class="change positive">+4.8%</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+             
+                <div class="dashboard-content" id="trade-tab">
+                    <div class="trade-container">
+                        <div class="trade-sidebar">
+                            <h3>Place Order</h3>
+                            <form class="trade-form">
+                                <div class="form-group">
+                                    <label>Symbol</label>
+                                    <input type="text" placeholder="Enter stock symbol">
+                                </div>
+                                <div class="form-group">
+                                    <label>Order Type</label>
+                                    <select>
+                                        <option>Market</option>
+                                        <option>Limit</option>
+                                        <option>Stop</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="number" step="0.01">
+                                </div>
+                                <button class="btn-primary" style="width: 100%;">Place Order</button>
+                            </form>
+                        </div>
+                        <div class="trade-chart">
+                            <div id="stock-chart"></div>
+                        </div>
+                    </div>
+                </div>
+
+      
+                <div class="dashboard-content" id="orders-tab">
+                    <div class="orders-container">
+                        <div class="orders-header">
+                            <h3>Open Orders</h3>
+                            <select>
+                                <option>All Orders</option>
+                                <option>Pending</option>
+                                <option>Filled</option>
+                            </select>
+                        </div>
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Symbol</th>
+                                    <th>Type</th>
+                                    <th>Side</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-03-15 14:30</td>
+                                    <td>AAPL</td>
+                                    <td>Limit</td>
+                                    <td>Buy</td>
+                                    <td>$182.50</td>
+                                    <td>10</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td><button class="btn-text">Cancel</button></td>
+                                </tr>
+                          
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            
+                <div class="dashboard-content" id="deposit-tab">
+                    <div class="deposit-container">
+                        <div class="deposit-card">
+                            <h3>Deposit USDC</h3>
+                            <div class="deposit-form">
+                                <label>Amount (USDC)</label>
+                                <input type="number" placeholder="Enter amount" min="1">
+                                <label>Your USDC Address</label>
+                                <input type="text" placeholder="Enter your USDC address">
+                                <button class="btn-primary" style="width: 100%;">Deposit USDC</button>
+                            </div>
+                        </div>
+                        <div class="deposit-card">
+                            <h3>Recent Transactions</h3>
+                            <div class="transaction-list">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="dashboard-content" id="analytics-tab">
+                    <div class="analytics-container">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+-->
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Redefining <span class="highlight">Stock Exchange</span></h2>
+            <div class="about-grid">
+                <div class="about-item">
+                    <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                    <h3>Cheaper</h3>
+                    <p>Significantly lower fees than traditional brokerages, making investing accessible to everyone.
+                    </p>
+                </div>
+                <div class="about-item">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Faster</h3>
+                    <p>Execute trades instantly with our advanced blockchain infrastructure, no more waiting periods.
+                    </p>
+                </div>
+                <div class="about-item">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Transparent</h3>
+                    <p>All transactions are recorded on the blockchain, ensuring complete visibility and trust.</p>
+                </div>
+                <div class="about-item">
+                    <div class="icon"><i class="fas fa-globe"></i></div>
+                    <h3>Decentralized</h3>
+                    <p>True ownership with voting rights, backed 1:1 by real stocks held by licensed custodians in your
+                        name.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tokenization">
+        <div class="container">
+            <h2>Real-World <span class="highlight">Asset Tokenization</span></h2>
+            <div class="tokenization-content">
+                <div class="tokenization-text">
+                    <p class="lead-text">Through blockchain technology, we're revolutionizing how the world invests in
+                        stocks and securities.</p>
+                    <p>Vestora Finance tokenizes real-world assets with 1:1 backing, enabling fractional ownership,
+                        instant settlement, and 24/7 trading of stocks from any global market. Each token represents
+                        direct ownership of the underlying asset, held by licensed custodians in your name.</p>
+                    <p>This breakthrough approach eliminates geographical restrictions, reduces costs, and provides true
+                        asset ownership with all associated rights and benefits.</p>
+                    <div class="tokenization-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-globe-americas"></i>
+                            <h4>Global Access</h4>
+                            <p>Invest in any stock from any market worldwide</p>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-vote-yea"></i>
+                            <h4>Full Rights</h4>
+                            <p>Maintain voting rights and receive dividends</p>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-lock"></i>
+                            <h4>Secure Custody</h4>
+                            <p>Assets held by regulated custodians in your name</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tokenization-image">
+                    <img src="tokenization.png" alt="Asset Tokenization Illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How <span class="highlight">It Works</span></h2>
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3>Create Account</h3>
+                    <p>Sign up and complete a simple verification process to get started.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Fund Your Wallet</h3>
+                    <p>Deposit funds using traditional or cryptocurrency payment methods.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-icon"><i class="fas fa-search-dollar"></i></div>
+                    <h3>Select Stocks</h3>
+                    <p>Browse and select from thousands of global stocks and assets.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Own & Manage</h3>
+                    <p>Track performance, receive dividends, and exercise voting rights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Platform <span class="highlight">Features</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Peer-to-Peer Trading</h3>
+                    <p>Trade directly with other investors without intermediaries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+                    <h3>Multi-Asset Wallet</h3>
+                    <p>Store and manage stocks, bonds, and other assets in one secure place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Full Ownership Rights</h3>
+                    <p>Enjoy voting rights and true ownership of your tokenized assets.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Smart Contracts</h3>
+                    <p>Automated, trustless execution of trading agreements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-coins"></i></div>
+                    <h3>Tokenized Assets</h3>
+                    <p>1:1 backed tokenized stocks held by licensed custodians in your name.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>Low Fees</h3>
+                    <p>Minimal transaction costs compared to traditional exchanges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <h2>Development <span class="highlight">Roadmap</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot active"></div>
+                    <div class="timeline-content">
+                        <h3>March 2025</h3>
+                        <h4>Platform Development</h4>
+                        <p>Core infrastructure and smart contract development.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>June 2025</h3>
+                        <h4>Private Beta</h4>
+                        <p>Limited access to early adopters and investors.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>September 2025</h3>
+                        <h4>Public Beta Launch</h4>
+                        <p>Open platform with initial asset offerings.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>December 2025</h3>
+                        <h4>Full Platform Launch</h4>
+                        <p>Complete feature set and expanded asset listings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="waitlist" class="waitlist">
+        <div class="container">
+            <h2>Join the <span class="highlight">Revolution</span></h2>
+            <p>Be among the first to experience the future of stock trading. Sign up for our waitlist to get early
+                access and exclusive benefits.</p>
+            <form id="waitlist-form" action="https://formspree.io/f/mwplqgqv" method="POST">
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn-primary">Join Waitlist</button>
+                </div>
+                <div id="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently <span class="highlight">Asked Questions</span></h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does Vestora Finance ensure my stocks are real?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All stocks on our platform are purchased 1:1 through licensed custodians and tokenized on the
+                            blockchain. Each token represents actual ownership of the underlying asset, registered in
+                            your name, with full voting rights and dividend entitlements.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I trade stocks from any global market?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Vestora Finance provides access to stocks from major global markets including NYSE,
+                            NASDAQ, LSE, TSE, and many more. Our platform removes geographical restrictions, allowing
+                            you to diversify your portfolio internationally.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the fees compared to traditional brokers?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our fees are typically 50-80% lower than traditional brokerages. We charge a small
+                            transaction fee for trades and no hidden fees. The exact fee structure will be published
+                            before our public launch.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is Vestora Finance regulated?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we work with regulated custodians and comply with all relevant financial regulations.
+                            We're committed to maintaining the highest standards of security, compliance, and
+                            transparency.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is real-world asset tokenization and how does it work?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Real-world asset tokenization is the process of converting ownership rights of a physical or
+                            traditional financial asset (like stocks) into digital tokens on a blockchain. At Vestora
+                            Finance, we work with licensed custodians who purchase and hold the actual stocks in your
+                            name. We then issue digital tokens that represent your ownership of these assets on a 1:1
+                            basis. This allows for fractional ownership, instant transfers, and 24/7 trading while
+                            maintaining all the rights and benefits of traditional stock ownership.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in <span class="highlight">Touch</span></h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-twitter"></i>
+                    <p><a href="https://twitter.com/VestoraFinance" target="_blank">@VestoraFinance</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:info@VestoraFinance.io">info@VestoraFinance.io</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="footer logo.png" alt="Vestora Finance Logo" class="footer-logo-img">
+                    <h2>Vestora Finance</h2>
+                    <p>The Future of Decentralized Trading</p>
+                    <p class="company-description">Vestora Finance is revolutionizing the stock market with blockchain
+                        technology, providing secure, transparent, and efficient trading solutions for investors
+                        worldwide.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#waitlist">Join Waitlist</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@VestoraFinance.io</p>
+                    <p><i class="fab fa-twitter"></i> @VestoraFinance</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Pasadena, CA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vestora Finance. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
