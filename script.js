@@ -123,10 +123,10 @@ if (localStorage.getItem('waitlistSignup') === 'true') {
                 <p>We've received your email (${email}) and will notify you when we launch.</p>
                 <p>Want to increase your chances of early access? Share Vestora Finance with others:</p>
                 <div class="social-share">
-                    <a href="https://twitter.com/intent/tweet?text=I%20just%20joined%20the%20waitlist%20for%20Vestora%20Finance%2C%20a%20revolutionary%20decentralized%20stock%20exchange.%20Join%20me!&url=https://vestora.finance" target="_blank" rel="noopener noreferrer">
+                    <a href="https://twitter.com/intent/tweet?text=I%20just%20joined%20the%20waitlist%20for%20Vestora%20Finance%2C%20a%20revolutionary%20decentralized%20stock%20exchange.%20Join%20me!&url=https://vestora.fi" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-twitter"></i> Share on Twitter
                     </a>
-                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://vestora.finance" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://vestora.fi" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i> Share on LinkedIn
                     </a>
                 </div>
