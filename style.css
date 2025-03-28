@@ -416,6 +416,8 @@ nav .btn-primary:hover {
     padding: 0 50px;
     position: relative;
     overflow: hidden;
+    padding-bottom: 50px;
+    /* Add more padding at bottom */
 }
 
 .hero::before {
@@ -453,80 +455,111 @@ nav .btn-primary:hover {
 }
 
 .hero-image {
+    flex: 1;
     position: relative;
-    width: 40%;
-    height: 400px;
+    height: 450px;
+    /* Increased height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    perspective: 1000px;
+    padding-bottom: 50px;
+    /* Add padding at bottom */
 }
 
 /* 3D Cube Animation */
 .cube-container {
-    width: 250px;
-    height: 250px;
-    perspective: 1000px;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    transform-style: preserve-3d;
+    animation: rotate 20s linear infinite;
     margin: 0 auto;
+    margin-top: 50px;
+    /* Move down more */
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* Fix disconnected cube faces */
 .cube {
     position: relative;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    animation: rotate 20s infinite linear;
+    transform: translateZ(-90px);
+    /* Center the cube */
 }
 
 .face {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 82, 204, 0.05);
-    border: 1px solid rgba(0, 82, 204, 0.3);
+    width: 180px;
+    /* Match container size */
+    height: 180px;
+    /* Match container size */
+    background: rgba(25, 118, 210, 0.1);
+    border: 2px solid var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 0 20px rgba(0, 82, 204, 0.1);
-}
-
-.face::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--primary-color);
+    font-size: 40px;
+    color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(25, 118, 210, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .front {
-    transform: translateZ(125px);
+    transform: translateZ(90px);
+    /* Half of width */
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.2), rgba(54, 179, 126, 0.2));
+    border-color: var(--primary-color);
 }
 
 .back {
-    transform: rotateY(180deg) translateZ(125px);
+    transform: rotateY(180deg) translateZ(90px);
+    /* Half of width */
+    background: linear-gradient(135deg, rgba(54, 179, 126, 0.2), rgba(25, 118, 210, 0.2));
+    border-color: var(--accent-color);
 }
 
 .right {
-    transform: rotateY(90deg) translateZ(125px);
+    transform: rotateY(90deg) translateZ(90px);
+    /* Half of width */
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.15), rgba(54, 179, 126, 0.15));
+    border-color: var(--primary-color);
 }
 
 .left {
-    transform: rotateY(-90deg) translateZ(125px);
+    transform: rotateY(-90deg) translateZ(90px);
+    /* Half of width */
+    background: linear-gradient(135deg, rgba(54, 179, 126, 0.15), rgba(25, 118, 210, 0.15));
+    border-color: var(--accent-color);
 }
 
 .top {
-    transform: rotateX(90deg) translateZ(125px);
+    transform: rotateX(90deg) translateZ(90px);
+    /* Half of width */
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(54, 179, 126, 0.1));
+    border-color: var(--primary-color);
 }
 
 .bottom {
-    transform: rotateX(-90deg) translateZ(125px);
+    transform: rotateX(-90deg) translateZ(90px);
+    /* Half of width */
+    background: linear-gradient(135deg, rgba(54, 179, 126, 0.1), rgba(25, 118, 210, 0.1));
+    border-color: var(--accent-color);
 }
 
+/* Ensure proper animation */
 @keyframes rotate {
     0% {
-        transform: rotateX(0) rotateY(0);
+        transform: rotateX(0) rotateY(0) rotateZ(0);
     }
 
     100% {
-        transform: rotateX(360deg) rotateY(360deg);
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
     }
 }
 
@@ -3046,4 +3079,1042 @@ footer::before {
     width: 24px;
     height: 24px;
     object-fit: contain;
+}
+
+/* Enhanced Portfolio Cards with Blue Background */
+.portfolio-card {
+    background: linear-gradient(135deg, rgba(0, 82, 204, 0.08), rgba(0, 163, 191, 0.08));
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(0, 82, 204, 0.15);
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.portfolio-card h3 {
+    font-size: 15px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.portfolio-value {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 8px;
+}
+
+/* Enhanced Holdings Table Design */
+.holdings-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 25px;
+    overflow-x: auto;
+    position: relative;
+}
+
+.holdings-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 12px 12px 0 0;
+}
+
+.holdings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.holdings-header h3 {
+    font-size: 16px;
+    color: var(--text-color);
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    padding-left: 15px;
+}
+
+.holdings-header h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.view-options {
+    display: flex;
+    gap: 15px;
+    background: var(--bg-color);
+    border-radius: 6px;
+    padding: 3px;
+}
+
+.view-options span {
+    font-size: 13px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 5px 12px;
+    border-radius: 4px;
+}
+
+.view-options span.active {
+    color: white;
+    background: var(--primary-color);
+}
+
+.holdings-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.holdings-table th,
+.holdings-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.holdings-table th {
+    font-weight: 500;
+    color: var(--text-color);
+    background: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--border-color);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.holdings-table tr:nth-child(even) {
+    background-color: rgba(245, 247, 250, 0.5);
+}
+
+.holdings-table tr:hover {
+    background-color: rgba(0, 82, 204, 0.03);
+}
+
+.holdings-table td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.holdings-table .asset-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.holdings-table .asset-info img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2px;
+}
+
+.holdings-table .change {
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.holdings-table .change.positive {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+.holdings-table .change.negative {
+    background: rgba(222, 53, 11, 0.1);
+    color: var(--error-color);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.action-buttons .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.action-buttons .btn-buy {
+    background: var(--accent-color);
+    color: white;
+}
+
+.action-buttons .btn-sell {
+    background: var(--error-color);
+    color: white;
+}
+
+/* Global Market Tab Styles */
+.market-regions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.region-tab {
+    padding: 8px 16px;
+    background: var(--bg-color);
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.region-tab.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.region-tab:hover:not(.active) {
+    background: rgba(0, 82, 204, 0.1);
+}
+
+/* Enhanced Dashboard Intro Text */
+.dashboard-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+.dashboard-intro h2 {
+    font-size: 32px;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.dashboard-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.dashboard-intro p {
+    font-size: 18px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Improved Learn More Button */
+.btn-learn-more {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.2);
+    text-decoration: none;
+}
+
+.btn-learn-more:hover {
+    background: #0046ad;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 82, 204, 0.3);
+}
+
+.btn-learn-more:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.2);
+}
+
+/* Enhanced Market Tab Styling */
+.market-container {
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 25px;
+}
+
+.market-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.market-header h3 {
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 600;
+    margin: 0;
+    position: relative;
+    padding-left: 15px;
+}
+
+.market-header h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 18px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.market-search {
+    position: relative;
+    width: 300px;
+}
+
+.market-search input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.market-search input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.market-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1px;
+}
+
+.market-tab {
+    padding: 12px 20px;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    font-weight: 500;
+}
+
+.market-tab.active {
+    color: var(--primary-color);
+}
+
+.market-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px 3px 0 0;
+}
+
+.market-tab:hover:not(.active) {
+    color: var(--primary-color);
+    background: rgba(0, 82, 204, 0.05);
+}
+
+.market-content {
+    display: none;
+}
+
+.market-content.active {
+    display: block;
+}
+
+.market-regions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.region-tab {
+    padding: 8px 16px;
+    background: var(--bg-color);
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.region-tab.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.region-tab:hover:not(.active) {
+    background: rgba(0, 82, 204, 0.1);
+}
+
+.market-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.market-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.market-table th {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.market-table th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.market-table th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.market-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.market-table tr:last-child td {
+    border-bottom: none;
+}
+
+.market-table tr:nth-child(even) {
+    background-color: rgba(245, 247, 250, 0.5);
+}
+
+.market-table tr:hover {
+    background-color: rgba(0, 82, 204, 0.05);
+}
+
+.market-table .asset-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.market-table .asset-info img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    border: 1px solid rgba(0, 82, 204, 0.1);
+}
+
+.market-table .change {
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.market-table .change.positive {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+.market-table .change.negative {
+    background: rgba(222, 53, 11, 0.1);
+    color: var(--error-color);
+}
+
+.region {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.region.us {
+    background: rgba(0, 82, 204, 0.1);
+    color: var(--primary-color);
+}
+
+.region.eu {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+.region.asia {
+    background: rgba(101, 84, 192, 0.1);
+    color: #6554c0;
+}
+
+.region.emerging {
+    background: rgba(255, 171, 0, 0.1);
+    color: #ffab00;
+}
+
+/* Additional styles for Crypto, Forex, and Commodities */
+.change.neutral {
+    background: rgba(144, 144, 144, 0.1);
+    color: var(--text-color);
+}
+
+.category {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.category.metals {
+    background: rgba(255, 171, 0, 0.1);
+    color: #ffab00;
+}
+
+.category.energy {
+    background: rgba(222, 53, 11, 0.1);
+    color: var(--error-color);
+}
+
+.category.agriculture {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+/* Enhance forex pairs styling */
+.forex-pair {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.forex-pair img {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+/* Responsive adjustments for market tables */
+@media (max-width: 1200px) {
+    .market-table-container {
+        overflow-x: auto;
+    }
+
+    .market-table {
+        min-width: 900px;
+    }
+}
+
+/* Enhance crypto category tabs */
+.market-regions .region-tab[data-region="defi"] {
+    border-left: 3px solid #6554c0;
+}
+
+.market-regions .region-tab[data-region="layer1"] {
+    border-left: 3px solid var(--primary-color);
+}
+
+.market-regions .region-tab[data-region="layer2"] {
+    border-left: 3px solid var(--secondary-color);
+}
+
+.market-regions .region-tab[data-region="meme"] {
+    border-left: 3px solid #ffab00;
+}
+
+.market-regions .region-tab[data-region="stablecoin"] {
+    border-left: 3px solid var(--accent-color);
+}
+
+/* Fix table cell alignment and add data separation */
+.market-table td,
+.holdings-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    /* Center content vertically */
+}
+
+.market-table th,
+.holdings-table th {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    vertical-align: middle;
+    /* Center content vertically */
+}
+
+/* Add data separation between columns */
+.market-table td:not(:last-child),
+.holdings-table td:not(:last-child),
+.market-table th:not(:last-child),
+.holdings-table th:not(:last-child) {
+    border-right: 1px solid rgba(233, 236, 239, 0.5);
+}
+
+/* Center change and percentage change cells */
+.market-table td .change,
+.holdings-table td .change {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    width: fit-content;
+}
+
+/* Enhanced Learn More Button - Not White */
+.btn-learn-more {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.2);
+    text-decoration: none;
+}
+
+.btn-learn-more:hover {
+    background: #0046ad;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 82, 204, 0.3);
+}
+
+.btn-learn-more:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.2);
+}
+
+/* Enhanced Dashboard Intro Text */
+.dashboard-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+.dashboard-intro h2 {
+    font-size: 32px;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.dashboard-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.dashboard-intro p {
+    font-size: 18px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    position: relative;
+    padding: 0 20px;
+}
+
+.dashboard-intro p::before,
+.dashboard-intro p::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-color);
+    opacity: 0.3;
+    top: 50%;
+}
+
+.dashboard-intro p::before {
+    left: 0;
+}
+
+.dashboard-intro p::after {
+    right: 0;
+}
+
+/* Add a subtle highlight to the intro text */
+.dashboard-intro p strong {
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+}
+
+.dashboard-intro p strong::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    opacity: 0.3;
+}
+
+/* Enhanced styling for change cells with consistent padding */
+.market-table td .change,
+.holdings-table td .change {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Ensure all tables have the same cell structure */
+.market-table td,
+.holdings-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+/* Add specific styling for change columns */
+.market-table th:nth-child(4),
+.market-table th:nth-child(5),
+.holdings-table th:nth-child(7) {
+    text-align: center;
+}
+
+.market-table td:nth-child(4),
+.market-table td:nth-child(5),
+.holdings-table td:nth-child(7) {
+    text-align: center;
+}
+
+/* Ensure consistent styling for all market tables */
+#crypto-market .market-table td .change,
+#forex-market .market-table td .change,
+#commodities-market .market-table td .change,
+#etfs-market .market-table td .change,
+#bonds-market .market-table td .change {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Fix padding and centering for change cells */
+.market-table td .change,
+.holdings-table td .change {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Center the content of change columns */
+.market-table td:nth-child(4),
+.market-table td:nth-child(5),
+.holdings-table td:nth-child(7) {
+    text-align: center;
+}
+
+/* Ensure change spans take up the full cell width */
+.market-table td:nth-child(4) .change,
+.market-table td:nth-child(5) .change,
+.holdings-table td:nth-child(7) .change {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Add specific styling for different market tables */
+#crypto-market .market-table td:nth-child(4) .change,
+#crypto-market .market-table td:nth-child(5) .change,
+#forex-market .market-table td:nth-child(4) .change,
+#forex-market .market-table td:nth-child(5) .change,
+#commodities-market .market-table td:nth-child(4) .change,
+#commodities-market .market-table td:nth-child(5) .change,
+#etfs-market .market-table td:nth-child(4) .change,
+#etfs-market .market-table td:nth-child(5) .change,
+#bonds-market .market-table td:nth-child(4) .change,
+#bonds-market .market-table td:nth-child(5) .change {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Ensure consistent cell padding */
+.market-table td,
+.holdings-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+/* Add specific padding for change columns */
+.market-table td:nth-child(4),
+.market-table td:nth-child(5) {
+    padding: 15px 10px;
+}
+
+/* Comprehensive fix for change and percentage change cells in all tables */
+.market-table td .change,
+.holdings-table td .change {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Center align the change columns */
+.market-table td:nth-child(4),
+.market-table td:nth-child(5),
+.holdings-table td:nth-child(7) {
+    text-align: center;
+    padding: 15px 5px;
+}
+
+/* Specific fixes for each market type */
+#stocks-market .market-table td:nth-child(4),
+#stocks-market .market-table td:nth-child(5),
+#etfs-market .market-table td:nth-child(4),
+#etfs-market .market-table td:nth-child(5),
+#commodities-market .market-table td:nth-child(4),
+#commodities-market .market-table td:nth-child(5),
+#bonds-market .market-table td:nth-child(4),
+#bonds-market .market-table td:nth-child(5),
+#crypto-market .market-table td:nth-child(4),
+#crypto-market .market-table td:nth-child(5),
+#forex-market .market-table td:nth-child(4),
+#forex-market .market-table td:nth-child(5) {
+    text-align: center;
+    padding: 15px 5px;
+}
+
+/* Ensure change spans are properly styled in all tables */
+#stocks-market .market-table td:nth-child(4) .change,
+#stocks-market .market-table td:nth-child(5) .change,
+#etfs-market .market-table td:nth-child(4) .change,
+#etfs-market .market-table td:nth-child(5) .change,
+#commodities-market .market-table td:nth-child(4) .change,
+#commodities-market .market-table td:nth-child(5) .change,
+#bonds-market .market-table td:nth-child(4) .change,
+#bonds-market .market-table td:nth-child(5) .change,
+#crypto-market .market-table td:nth-child(4) .change,
+#crypto-market .market-table td:nth-child(5) .change,
+#forex-market .market-table td:nth-child(4) .change,
+#forex-market .market-table td:nth-child(5) .change {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 6px 10px;
+}
+
+/* Add specific styling for positive/negative/neutral changes */
+.change.positive {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+.change.negative {
+    background: rgba(222, 53, 11, 0.1);
+    color: var(--error-color);
+}
+
+.change.neutral {
+    background: rgba(144, 144, 144, 0.1);
+    color: var(--text-color);
+}
+
+/* Ensure consistent table header styling */
+.market-table th:nth-child(4),
+.market-table th:nth-child(5) {
+    text-align: center;
+}
+
+/* Enhanced styling for sell buttons */
+.btn-sm.btn-sell {
+    background: rgba(222, 53, 11, 0.1);
+    color: var(--error-color);
+    border: 1px solid rgba(222, 53, 11, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-sm.btn-sell:hover {
+    background: var(--error-color);
+    color: white;
+    border-color: var(--error-color);
+}
+
+/* Ensure consistent styling for all small buttons */
+.btn-sm {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.btn-sm.btn-buy {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+    border: 1px solid rgba(54, 179, 126, 0.3);
+}
+
+.btn-sm.btn-buy:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* Action buttons container for better spacing */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* Ensure table cells with buttons have proper padding */
+.market-table td:last-child,
+.orders-table td:last-child,
+.assets-table td:last-child {
+    padding: 8px 15px;
 }

@@ -231,7 +231,7 @@
                 ownership rights.</p>
             <div class="cta-buttons">
                 <a href="#waitlist" class="btn-primary">Join Waitlist</a>
-                <a href="#about" class="btn-secondary">Learn More</a>
+                <a href="#about" class="btn-primary">Learn More</a>
             </div>
         </div>
         <div class="hero-image">
@@ -252,13 +252,11 @@
     <section class="dashboard-preview">
         <div class="container">
             <h2>Experience the <span class="highlight">Platform</span></h2>
-            <p class="section-description">Our intuitive dashboard gives you complete control over your global stock
-                portfolio</p>
-
             <div class="dashboard-container">
                 <div class="dashboard-tabs">
                     <div class="tab active" data-tab="portfolio">Portfolio</div>
                     <div class="tab" data-tab="trade">Trade</div>
+                    <div class="tab" data-tab="market">Markets</div>
                     <div class="tab" data-tab="orders">Orders</div>
                     <div class="tab" data-tab="deposit">Deposit</div>
                     <div class="tab" data-tab="wallet">Wallet</div>
@@ -270,7 +268,7 @@
                         <div class="portfolio-card">
                             <h3>Total Portfolio Value</h3>
                             <div class="value">$24,875.65</div>
-                            <div class="change positive">+3.2% today</div>
+                            <div><span class="change positive">+3.2% today</span></div>
                         </div>
                         <div class="portfolio-card">
                             <h3>Available Cash</h3>
@@ -280,58 +278,147 @@
                         <div class="portfolio-card">
                             <h3>Today's P&L</h3>
                             <div class="value positive">+$892.45</div>
-                            <div class="change positive">+4.8%</div>
+                            <div><span class="change positive">+4.8%</span></div>
                         </div>
                     </div>
 
-                    <div class="portfolio-holdings">
-                        <h3>Your Holdings</h3>
-                        <table class="holdings-table">
-                            <thead>
-                                <tr>
-                                    <th>Symbol</th>
-                                    <th>Name</th>
-                                    <th>Shares</th>
-                                    <th>Avg. Price</th>
-                                    <th>Current Price</th>
-                                    <th>Market Value</th>
-                                    <th>P&L</th>
-                                    <th>% Change</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>AAPL</td>
-                                    <td>Apple Inc.</td>
-                                    <td>15</td>
-                                    <td>$175.32</td>
-                                    <td>$182.50</td>
-                                    <td>$2,737.50</td>
-                                    <td class="positive">+$107.70</td>
-                                    <td class="positive">+4.1%</td>
-                                </tr>
-                                <tr>
-                                    <td>MSFT</td>
-                                    <td>Microsoft Corp.</td>
-                                    <td>10</td>
-                                    <td>$325.45</td>
-                                    <td>$342.78</td>
-                                    <td>$3,427.80</td>
-                                    <td class="positive">+$173.30</td>
-                                    <td class="positive">+5.3%</td>
-                                </tr>
-                                <tr>
-                                    <td>TSLA</td>
-                                    <td>Tesla Inc.</td>
-                                    <td>8</td>
-                                    <td>$245.80</td>
-                                    <td>$238.45</td>
-                                    <td>$1,907.60</td>
-                                    <td class="negative">-$58.80</td>
-                                    <td class="negative">-3.0%</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Enhanced Holdings Section -->
+                    <div class="holdings-section">
+                        <div class="holdings-header">
+                            <h3>Your Holdings</h3>
+                            <div class="view-options">
+                                <span class="active">All Assets</span>
+                                <span>Stocks</span>
+                                <span>ETFs</span>
+                                <span>Crypto</span>
+                            </div>
+                        </div>
+
+                        <div class="holdings-table-container">
+                            <table class="holdings-table">
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                        <th>Avg. Price</th>
+                                        <th>Current Price</th>
+                                        <th>Market Value</th>
+                                        <th>Change</th>
+                                        <th>% of Portfolio</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>AAPL</td>
+                                        <td>
+                                            <div class="asset-info">
+                                                <img src="https://logo.clearbit.com/apple.com" alt="Apple">
+                                                <span>Apple Inc.</span>
+                                            </div>
+                                        </td>
+                                        <td>15</td>
+                                        <td>$175.50</td>
+                                        <td>$182.63</td>
+                                        <td>$2,739.45</td>
+                                        <td><span class="change positive">+$106.95 (4.06%)</span></td>
+                                        <td>11.2%</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-sm btn-buy">Buy</button>
+                                                <button class="btn-sm btn-sell">Sell</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>MSFT</td>
+                                        <td>
+                                            <div class="asset-info">
+                                                <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft">
+                                                <span>Microsoft Corp.</span>
+                                            </div>
+                                        </td>
+                                        <td>10</td>
+                                        <td>$410.25</td>
+                                        <td>$417.88</td>
+                                        <td>$4,178.80</td>
+                                        <td><span class="change positive">+$76.30 (1.86%)</span></td>
+                                        <td>16.8%</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-sm btn-buy">Buy</button>
+                                                <button class="btn-sm btn-sell">Sell</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TSLA</td>
+                                        <td>
+                                            <div class="asset-info">
+                                                <img src="https://logo.clearbit.com/tesla.com" alt="Tesla">
+                                                <span>Tesla Inc.</span>
+                                            </div>
+                                        </td>
+                                        <td>8</td>
+                                        <td>$245.75</td>
+                                        <td>$237.45</td>
+                                        <td>$1,899.60</td>
+                                        <td><span class="change negative">-$66.40 (-3.38%)</span></td>
+                                        <td>7.6%</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-sm btn-buy">Buy</button>
+                                                <button class="btn-sm btn-sell">Sell</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>AMZN</td>
+                                        <td>
+                                            <div class="asset-info">
+                                                <img src="https://logo.clearbit.com/amazon.com" alt="Amazon">
+                                                <span>Amazon.com Inc.</span>
+                                            </div>
+                                        </td>
+                                        <td>12</td>
+                                        <td>$178.50</td>
+                                        <td>$185.95</td>
+                                        <td>$2,231.40</td>
+                                        <td><span class="change positive">+$89.40 (4.17%)</span></td>
+                                        <td>9.0%</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-sm btn-buy">Buy</button>
+                                                <button class="btn-sm btn-sell">Sell</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>BTC</td>
+                                        <td>
+                                            <div class="asset-info">
+                                                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png"
+                                                    alt="Bitcoin">
+                                                <span>Bitcoin</span>
+                                            </div>
+                                        </td>
+                                        <td>0.75</td>
+                                        <td>$62,450.00</td>
+                                        <td>$65,875.00</td>
+                                        <td>$49,406.25</td>
+                                        <td><span class="change positive">+$2,568.75 (5.48%)</span></td>
+                                        <td>19.9%</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-sm btn-buy">Buy</button>
+                                                <button class="btn-sm btn-sell">Sell</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -397,492 +484,1211 @@
                     </div>
                 </div>
 
-                <!-- Orders Tab with Market Orders -->
-                <div class="dashboard-content" id="orders-tab">
-                    <div class="orders-container">
-                        <div class="orders-tabs">
-                            <div class="orders-tab active" data-orders="your">Your Orders</div>
-                            <div class="orders-tab" data-orders="market">Market Orders</div>
-                        </div>
-
-                        <div class="orders-content active" id="your-orders">
-                            <div class="orders-header">
-                                <h3>Your Open Orders</h3>
-                                <button class="btn-outline">Cancel All</button>
-                            </div>
-
-                            <table class="orders-table">
-                                <thead>
-                                    <tr>
-                                        <th>Symbol</th>
-                                        <th>Type</th>
-                                        <th>Side</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>AAPL</td>
-                                        <td>Limit</td>
-                                        <td class="side buy">Buy</td>
-                                        <td>10</td>
-                                        <td>$180.00</td>
-                                        <td>$1,800.00</td>
-                                        <td><span class="status-badge status-pending">Pending</span></td>
-                                        <td>2024-03-15 10:23</td>
-                                        <td><button class="btn-sm btn-cancel">Cancel</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>TSLA</td>
-                                        <td>Limit</td>
-                                        <td class="side sell">Sell</td>
-                                        <td>5</td>
-                                        <td>$250.00</td>
-                                        <td>$1,250.00</td>
-                                        <td><span class="status-badge status-pending">Pending</span></td>
-                                        <td>2024-03-15 09:45</td>
-                                        <td><button class="btn-sm btn-cancel">Cancel</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <div class="orders-header">
-                                <h3>Order History</h3>
-                            </div>
-
-                            <table class="orders-table">
-                                <thead>
-                                    <tr>
-                                        <th>Symbol</th>
-                                        <th>Type</th>
-                                        <th>Side</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>MSFT</td>
-                                        <td>Market</td>
-                                        <td class="side buy">Buy</td>
-                                        <td>5</td>
-                                        <td>$342.78</td>
-                                        <td>$1,713.90</td>
-                                        <td><span class="status-badge status-filled">Filled</span></td>
-                                        <td>2024-03-14 14:32</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GOOGL</td>
-                                        <td>Limit</td>
-                                        <td class="side buy">Buy</td>
-                                        <td>8</td>
-                                        <td>$137.50</td>
-                                        <td>$1,100.00</td>
-                                        <td><span class="status-badge status-filled">Filled</span></td>
-                                        <td>2024-03-13 11:05</td>
-                                    </tr>
-                                    <tr>
-                                        <td>AMZN</td>
-                                        <td>Limit</td>
-                                        <td class="side sell">Sell</td>
-                                        <td>3</td>
-                                        <td>$130.25</td>
-                                        <td>$390.75</td>
-                                        <td><span class="status-badge status-filled">Filled</span></td>
-                                        <td>2024-03-12 15:47</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="orders-content" id="market-orders">
-                            <div class="orders-header">
-                                <h3>Available Market Orders</h3>
-                                <div class="filter-container">
-                                    <select class="filter-select">
-                                        <option value="all">All Symbols</option>
-                                        <option value="AAPL">AAPL</option>
-                                        <option value="MSFT">MSFT</option>
-                                        <option value="GOOGL">GOOGL</option>
-                                        <option value="AMZN">AMZN</option>
-                                        <option value="TSLA">TSLA</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="market-orders-container">
-                                <div class="market-orders-section">
-                                    <h4>Buy Orders</h4>
-                                    <table class="market-orders-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Symbol</th>
-                                                <th>Price</th>
-                                                <th>Quantity</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>AAPL</td>
-                                                <td>$180.00</td>
-                                                <td>25</td>
-                                                <td>$4,500.00</td>
-                                                <td><button class="btn-sm btn-sell">Sell</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>MSFT</td>
-                                                <td>$340.50</td>
-                                                <td>10</td>
-                                                <td>$3,405.00</td>
-                                                <td><button class="btn-sm btn-sell">Sell</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>GOOGL</td>
-                                                <td>$137.25</td>
-                                                <td>15</td>
-                                                <td>$2,058.75</td>
-                                                <td><button class="btn-sm btn-sell">Sell</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>AMZN</td>
-                                                <td>$129.75</td>
-                                                <td>12</td>
-                                                <td>$1,557.00</td>
-                                                <td><button class="btn-sm btn-sell">Sell</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="market-orders-section">
-                                    <h4>Sell Orders</h4>
-                                    <table class="market-orders-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Symbol</th>
-                                                <th>Price</th>
-                                                <th>Quantity</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>AAPL</td>
-                                                <td>$182.75</td>
-                                                <td>18</td>
-                                                <td>$3,289.50</td>
-                                                <td><button class="btn-sm btn-buy">Buy</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>MSFT</td>
-                                                <td>$343.25</td>
-                                                <td>8</td>
-                                                <td>$2,746.00</td>
-                                                <td><button class="btn-sm btn-buy">Buy</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>GOOGL</td>
-                                                <td>$138.50</td>
-                                                <td>20</td>
-                                                <td>$2,770.00</td>
-                                                <td><button class="btn-sm btn-buy">Buy</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>TSLA</td>
-                                                <td>$248.75</td>
-                                                <td>5</td>
-                                                <td>$1,243.75</td>
-                                                <td><button class="btn-sm btn-buy">Buy</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                <!-- Market Tab Content with Enhanced Structure -->
+                <div class="dashboard-content" id="market-tab">
+                    <div class="market-container">
+                        <div class="market-header">
+                            <h3>Global Markets</h3>
+                            <div class="market-search">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" placeholder="Search markets, assets...">
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Deposit Tab with Enhanced UI -->
-                <div class="dashboard-content" id="deposit-tab">
-                    <div class="deposit-container">
-                        <div class="deposit-card">
-                            <h3>Deposit USDC</h3>
-                            <div class="deposit-methods">
-                                <div class="deposit-method-tab active" data-method="crypto">
-                                    <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC">
-                                    <span>Crypto</span>
-                                </div>
-                                <div class="deposit-method-tab" data-method="bank">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt="Bank">
-                                    <span>Bank Transfer</span>
-                                </div>
-                                <div class="deposit-method-tab" data-method="card">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Card">
-                                    <span>Credit Card</span>
-                                </div>
+                        <div class="market-tabs">
+                            <div class="market-tab active" data-market="stocks">Stocks</div>
+                            <div class="market-tab" data-market="etfs">ETFs</div>
+                            <div class="market-tab" data-market="bonds">Bonds</div>
+                            <div class="market-tab" data-market="crypto">Crypto</div>
+                            <div class="market-tab" data-market="forex">Forex</div>
+                            <div class="market-tab" data-market="commodities">Commodities</div>
+                        </div>
+
+                        <div class="market-content active" id="stocks-market">
+                            <div class="market-regions">
+                                <div class="region-tab active" data-region="all">All Regions</div>
+                                <div class="region-tab" data-region="us">United States</div>
+                                <div class="region-tab" data-region="europe">Europe</div>
+                                <div class="region-tab" data-region="asia">Asia Pacific</div>
+                                <div class="region-tab" data-region="emerging">Emerging Markets</div>
                             </div>
 
-                            <div class="deposit-method-content active" id="crypto-method">
-                                <div class="deposit-form">
-                                    <label>Amount (USDC)</label>
-                                    <input type="number" placeholder="Enter amount" min="1" value="1000">
-
-                                    <label>Select Deposit Method</label>
-                                    <div class="deposit-options">
-                                        <div class="deposit-option selected">
-                                            <input type="radio" name="deposit-speed" id="instant"
-                                                class="deposit-option-radio" checked>
-                                            <div class="deposit-option-icon">
-                                                <img src="https://cdn-icons-png.flaticon.com/512/6941/6941697.png"
-                                                    alt="Instant">
-                                            </div>
-                                            <div class="deposit-option-details">
-                                                <div class="deposit-option-title">Instant Deposit</div>
-                                                <div class="deposit-option-description">Funds available immediately
+                            <div class="market-table-container">
+                                <table class="market-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Change</th>
+                                            <th>% Change</th>
+                                            <th>Market Cap</th>
+                                            <th>Region</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>AAPL</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/apple.com" alt="Apple">
+                                                    <span>Apple Inc.</span>
                                                 </div>
-                                            </div>
-                                            <div class="deposit-option-fee">0.1% fee</div>
-                                        </div>
-                                        <div class="deposit-option">
-                                            <input type="radio" name="deposit-speed" id="standard"
-                                                class="deposit-option-radio">
-                                            <div class="deposit-option-icon">
-                                                <img src="https://cdn-icons-png.flaticon.com/512/2972/2972531.png"
-                                                    alt="Standard">
-                                            </div>
-                                            <div class="deposit-option-details">
-                                                <div class="deposit-option-title">Standard Deposit</div>
-                                                <div class="deposit-option-description">Funds available in 1-3 days
+                                            </td>
+                                            <td>$182.63</td>
+                                            <td><span class="change positive">+$2.45</span></td>
+                                            <td><span class="change positive">+1.36%</span></td>
+                                            <td>$2.85T</td>
+                                            <td><span class="region us">US</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
                                                 </div>
-                                            </div>
-                                            <div class="deposit-option-fee">No fee</div>
-                                        </div>
-                                    </div>
-
-                                    <label>Your USDC Address</label>
-                                    <div class="address-input">
-                                        <input type="text" value="0x1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t" readonly>
-                                        <button class="btn-icon" title="Copy address"><i
-                                                class="fas fa-copy"></i></button>
-                                    </div>
-
-                                    <div class="supported-networks">
-                                        <span>Supported Networks:</span>
-                                        <div class="network-icons">
-                                            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum"
-                                                title="Ethereum">
-                                            <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon"
-                                                title="Polygon">
-                                            <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png"
-                                                alt="Avalanche" title="Avalanche">
-                                            <img src="https://cryptologos.cc/logos/arbitrum-arb-logo.png" alt="Arbitrum"
-                                                title="Arbitrum">
-                                        </div>
-                                    </div>
-
-                                    <button class="btn-primary" style="width: 100%; margin-top: 20px;">Deposit
-                                        Funds</button>
-                                </div>
-                            </div>
-
-                            <div class="deposit-method-content" id="bank-method">
-                                <div class="deposit-form">
-                                    <label>Amount (USD)</label>
-                                    <input type="number" placeholder="Enter amount" min="1" value="1000">
-
-                                    <label>Select Bank</label>
-                                    <div class="bank-selection">
-                                        <div class="bank-option">
-                                            <img src="https://logo.clearbit.com/chase.com" alt="Chase"
-                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/4616/4616089.png'">
-                                            <span>Chase</span>
-                                        </div>
-                                        <div class="bank-option">
-                                            <img src="https://logo.clearbit.com/bankofamerica.com" alt="Bank of America"
-                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/2164/2164656.png'">
-                                            <span>Bank of America</span>
-                                        </div>
-                                        <div class="bank-option">
-                                            <img src="https://logo.clearbit.com/wellsfargo.com" alt="Wells Fargo"
-                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968416.png'">
-                                            <span>Wells Fargo</span>
-                                        </div>
-                                        <div class="bank-option">
-                                            <img src="https://logo.clearbit.com/citibank.com" alt="Citibank"
-                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968404.png'">
-                                            <span>Citibank</span>
-                                        </div>
-                                        <div class="bank-option add-new">
-                                            <i class="fas fa-plus-circle"></i>
-                                            <span>Add New Bank</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="deposit-timing">
-                                        <div class="timing-icon">
-                                            <i class="fas fa-clock"></i>
-                                        </div>
-                                        <div class="timing-details">
-                                            <div class="timing-title">Processing Time</div>
-                                            <div class="timing-description">1-3 business days</div>
-                                        </div>
-                                    </div>
-
-                                    <button class="btn-primary" style="width: 100%; margin-top: 20px;">Continue to
-                                        Bank</button>
-                                </div>
-                            </div>
-
-                            <div class="deposit-method-content" id="card-method">
-                                <div class="deposit-form">
-                                    <label>Amount (USD)</label>
-                                    <input type="number" placeholder="Enter amount" min="1" value="1000">
-
-                                    <label>Card Information</label>
-                                    <div class="card-input">
-                                        <div class="card-icons">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png"
-                                                alt="Mastercard">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/196/196539.png" alt="Amex">
-                                        </div>
-                                        <input type="text" placeholder="Card Number">
-                                    </div>
-
-                                    <div class="card-details">
-                                        <input type="text" placeholder="MM/YY">
-                                        <input type="text" placeholder="CVC">
-                                    </div>
-
-                                    <div class="card-name">
-                                        <input type="text" placeholder="Cardholder Name">
-                                    </div>
-
-                                    <div class="fee-notice">
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>A 3% fee applies to credit card deposits</span>
-                                    </div>
-
-                                    <button class="btn-primary" style="width: 100%; margin-top: 20px;">Pay Now</button>
-                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>MSFT</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft">
+                                                    <span>Microsoft Corp.</span>
+                                                </div>
+                                            </td>
+                                            <td>$417.88</td>
+                                            <td><span class="change positive">+$3.25</span></td>
+                                            <td><span class="change positive">+0.78%</span></td>
+                                            <td>$3.11T</td>
+                                            <td><span class="region us">US</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>GOOGL</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/google.com" alt="Google">
+                                                    <span>Alphabet Inc.</span>
+                                                </div>
+                                            </td>
+                                            <td>$175.45</td>
+                                            <td><span class="change negative">-$1.25</span></td>
+                                            <td><span class="change negative">-0.71%</span></td>
+                                            <td>$2.21T</td>
+                                            <td><span class="region us">US</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
-                        <div class="deposit-card">
-                            <h3>Recent Transactions</h3>
-                            <div class="transaction-list">
-                                <div class="transaction">
-                                    <div class="transaction-icon deposit"><i class="fas fa-arrow-down"></i></div>
-                                    <div class="transaction-details">
-                                        <div class="transaction-title">USDC Deposit</div>
-                                        <div class="transaction-date">2024-03-14 09:23</div>
-                                    </div>
-                                    <div class="transaction-amount">+1,000 USDC</div>
-                                    <div class="transaction-status completed">Completed</div>
-                                </div>
-                                <div class="transaction">
-                                    <div class="transaction-icon withdraw"><i class="fas fa-arrow-up"></i></div>
-                                    <div class="transaction-details">
-                                        <div class="transaction-title">USDC Withdrawal</div>
-                                        <div class="transaction-date">2024-03-10 15:47</div>
-                                    </div>
-                                    <div class="transaction-amount">-500 USDC</div>
-                                    <div class="transaction-status completed">Completed</div>
-                                </div>
-                                <div class="transaction">
-                                    <div class="transaction-icon deposit"><i class="fas fa-arrow-down"></i></div>
-                                    <div class="transaction-details">
-                                        <div class="transaction-title">USDC Deposit</div>
-                                        <div class="transaction-date">2024-03-05 11:32</div>
-                                    </div>
-                                    <div class="transaction-amount">+2,500 USDC</div>
-                                    <div class="transaction-status completed">Completed</div>
-                                </div>
+                        <!-- Updated ETFs Market Table with Proper Change Spans -->
+                        <div class="market-content" id="etfs-market">
+                            <div class="market-regions">
+                                <div class="region-tab active" data-region="all">All Regions</div>
+                                <div class="region-tab" data-region="us">United States</div>
+                                <div class="region-tab" data-region="europe">Europe</div>
+                                <div class="region-tab" data-region="asia">Asia Pacific</div>
+                                <div class="region-tab" data-region="emerging">Emerging Markets</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Wallet Tab -->
-                <div class="dashboard-content" id="wallet-tab">
-                    <div class="wallet-container">
-                        <div class="wallet-overview">
-                            <div class="wallet-card main">
-                                <h3>USDC Balance</h3>
-                                <div class="wallet-balance">5,234.89 USDC</div>
-                                <div class="wallet-actions">
-                                    <button class="btn-primary">Deposit</button>
-                                    <button class="btn-secondary">Withdraw</button>
-                                </div>
-                            </div>
-                            <div class="wallet-card">
-                                <h3>Connected Wallet</h3>
-                                <div class="wallet-address">
-                                    <i class="fas fa-wallet"></i>
-                                    <span>0x7a2...f9e3</span>
-                                    <span class="wallet-badge">Ethereum</span>
-                                </div>
-                                <button class="btn-outline">Disconnect</button>
+                            <div class="market-table-container">
+                                <table class="market-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Change</th>
+                                            <th>% Change</th>
+                                            <th>AUM</th>
+                                            <th>Region</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>SPY</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/spdrs.com" alt="SPY">
+                                                    <span>SPDR S&P 500 ETF</span>
+                                                </div>
+                                            </td>
+                                            <td>$518.78</td>
+                                            <td><span class="change positive">+$3.45</span></td>
+                                            <td><span class="change positive">+0.67%</span></td>
+                                            <td>$472.5B</td>
+                                            <td><span class="region us">US</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>QQQ</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/invesco.com" alt="QQQ">
+                                                    <span>Invesco QQQ Trust</span>
+                                                </div>
+                                            </td>
+                                            <td>$438.92</td>
+                                            <td><span class="change positive">+$4.22</span></td>
+                                            <td><span class="change positive">+0.97%</span></td>
+                                            <td>$231.8B</td>
+                                            <td><span class="region us">US</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>VWRA</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/vanguard.com" alt="Vanguard">
+                                                    <span>Vanguard FTSE All-World</span>
+                                                </div>
+                                            </td>
+                                            <td>$112.35</td>
+                                            <td><span class="change positive">+$0.78</span></td>
+                                            <td><span class="change positive">+0.70%</span></td>
+                                            <td>$45.2B</td>
+                                            <td><span class="region eu">EU</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1306</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/nomura-am.co.jp" alt="Nomura">
+                                                    <span>NEXT FUNDS Nikkei 225</span>
+                                                </div>
+                                            </td>
+                                            <td>¥31,245</td>
+                                            <td><span class="change negative">-¥125</span></td>
+                                            <td><span class="change negative">-0.40%</span></td>
+                                            <td>¥1.2T</td>
+                                            <td><span class="region asia">Asia</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>EEM</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/ishares.com" alt="iShares">
+                                                    <span>iShares MSCI Emerging Markets</span>
+                                                </div>
+                                            </td>
+                                            <td>$42.87</td>
+                                            <td><span class="change positive">+$0.34</span></td>
+                                            <td><span class="change positive">+0.80%</span></td>
+                                            <td>$21.5B</td>
+                                            <td><span class="region emerging">EM</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-sm btn-buy">Buy</button>
+                                                    <button class="btn-sm btn-sell">Sell</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="wallet-assets">
-                            <h3>Your Assets</h3>
-                            <table class="assets-table">
-                                <thead>
-                                    <tr>
-                                        <th>Asset</th>
-                                        <th>Balance</th>
-                                        <th>Value (USD)</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="asset-info">
-                                                <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"
-                                                    alt="USDC">
-                                                <span>USDC</span>
-                                            </div>
-                                        </td>
-                                        <td>5,234.89</td>
-                                        <td>$5,234.89</td>
-                                        <td>
-                                            <button class="btn-sm">Deposit</button>
-                                            <button class="btn-sm">Withdraw</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="asset-info">
-                                                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">
-                                                <span>ETH</span>
-                                            </div>
-                                        </td>
-                                        <td>0.25</td>
-                                        <td>$750.25</td>
-                                        <td>
-                                            <button class="btn-sm">Deposit</button>
-                                            <button class="btn-sm">Withdraw</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                        <!-- Updated Bonds Market Table with Consistent Structure -->
+                        <div class="market-content" id="bonds-market">
+                            <div class="market-regions">
+                                <div class="region-tab active" data-region="all">All Regions</div>
+                                <div class="region-tab" data-region="us">United States</div>
+                                <div class="region-tab" data-region="europe">Europe</div>
+                                <div class="region-tab" data-region="asia">Asia Pacific</div>
+                                <div class="region-tab" data-region="emerging">Emerging Markets</div>
+                            </div>
+
+                            <div class="market-table-container">
+                                <table class="market-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Name</th>
+                                            <th>Yield</th>
+                                            <th>Change</th>
+                                            <th>% Change</th>
+                                            <th>Price</th>
+                                            <th>Maturity</th>
+                                            <th>Region</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>US10Y</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/treasury.gov" alt="US Treasury">
+                                                    <span>US 10-Year Treasury</span>
+                                                </div>
+                                            </td>
+                                            <td>4.25%</td>
+                                            <td><span class="change positive">+0.05%</span></td>
+                                            <td><span class="change positive">+1.19%</span></td>
+                                            <td>$96.75</td>
+                                            <td>10Y</td>
+                                            <td><span class="region us">US</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>US2Y</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/treasury.gov" alt="US Treasury">
+                                                    <span>US 2-Year Treasury</span>
+                                                </div>
+                                            </td>
+                                            <td>4.65%</td>
+                                            <td><span class="change negative">-0.03%</span></td>
+                                            <td><span class="change negative">-0.64%</span></td>
+                                            <td>$99.25</td>
+                                            <td>2Y</td>
+                                            <td><span class="region us">US</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DE10Y</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/bundesbank.de"
+                                                        alt="German Bond">
+                                                    <span>German 10-Year Bund</span>
+                                                </div>
+                                            </td>
+                                            <td>2.35%</td>
+                                            <td><span class="change positive">+0.04%</span></td>
+                                            <td><span class="change positive">+1.73%</span></td>
+                                            <td>€101.25</td>
+                                            <td>10Y</td>
+                                            <td><span class="region eu">EU</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>UK10Y</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/bankofengland.co.uk"
+                                                        alt="UK Gilt">
+                                                    <span>UK 10-Year Gilt</span>
+                                                </div>
+                                            </td>
+                                            <td>3.95%</td>
+                                            <td><span class="change positive">+0.07%</span></td>
+                                            <td><span class="change positive">+1.80%</span></td>
+                                            <td>£97.85</td>
+                                            <td>10Y</td>
+                                            <td><span class="region eu">EU</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>JP10Y</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://logo.clearbit.com/boj.or.jp" alt="Japanese Bond">
+                                                    <span>Japanese 10-Year Bond</span>
+                                                </div>
+                                            </td>
+                                            <td>0.85%</td>
+                                            <td><span class="change positive">+0.02%</span></td>
+                                            <td><span class="change positive">+2.41%</span></td>
+                                            <td>¥99.75</td>
+                                            <td>10Y</td>
+                                            <td><span class="region asia">Asia</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Updated Crypto Market Table with Consistent Structure -->
+                        <div class="market-content" id="crypto-market">
+                            <div class="market-regions">
+                                <div class="region-tab active" data-region="all">All</div>
+                                <div class="region-tab" data-region="defi">DeFi</div>
+                                <div class="region-tab" data-region="layer1">Layer 1</div>
+                                <div class="region-tab" data-region="layer2">Layer 2</div>
+                                <div class="region-tab" data-region="meme">Meme</div>
+                                <div class="region-tab" data-region="stablecoin">Stablecoins</div>
+                            </div>
+
+                            <div class="market-table-container">
+                                <table class="market-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Change</th>
+                                            <th>% Change</th>
+                                            <th>Market Cap</th>
+                                            <th>Volume (24h)</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>BTC</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png"
+                                                        alt="Bitcoin">
+                                                    <span>Bitcoin</span>
+                                                </div>
+                                            </td>
+                                            <td>$65,875.42</td>
+                                            <td><span class="change positive">+$1,245.30</span></td>
+                                            <td><span class="change positive">+1.93%</span></td>
+                                            <td>$1.29T</td>
+                                            <td>$42.5B</td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ETH</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png"
+                                                        alt="Ethereum">
+                                                    <span>Ethereum</span>
+                                                </div>
+                                            </td>
+                                            <td>$3,478.25</td>
+                                            <td><span class="change positive">+$87.45</span></td>
+                                            <td><span class="change positive">+2.58%</span></td>
+                                            <td>$418.2B</td>
+                                            <td>$18.7B</td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>SOL</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png"
+                                                        alt="Solana">
+                                                    <span>Solana</span>
+                                                </div>
+                                            </td>
+                                            <td>$142.87</td>
+                                            <td><span class="change positive">+$5.32</span></td>
+                                            <td><span class="change positive">+3.87%</span></td>
+                                            <td>$62.5B</td>
+                                            <td>$4.2B</td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>USDT</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cryptologos.cc/logos/tether-usdt-logo.png"
+                                                        alt="Tether">
+                                                    <span>Tether</span>
+                                                </div>
+                                            </td>
+                                            <td>$1.00</td>
+                                            <td><span class="change neutral">$0.00</span></td>
+                                            <td><span class="change neutral">0.00%</span></td>
+                                            <td>$95.8B</td>
+                                            <td>$32.1B</td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>LINK</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cryptologos.cc/logos/chainlink-link-logo.png"
+                                                        alt="Chainlink">
+                                                    <span>Chainlink</span>
+                                                </div>
+                                            </td>
+                                            <td>$14.25</td>
+                                            <td><span class="change negative">-$0.45</span></td>
+                                            <td><span class="change negative">-3.06%</span></td>
+                                            <td>$8.2B</td>
+                                            <td>$1.5B</td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DOGE</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png"
+                                                        alt="Dogecoin">
+                                                    <span>Dogecoin</span>
+                                                </div>
+                                            </td>
+                                            <td>$0.1245</td>
+                                            <td><span class="change positive">+$0.0078</span></td>
+                                            <td><span class="change positive">+6.68%</span></td>
+                                            <td>$17.8B</td>
+                                            <td>$2.3B</td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Updated Forex Market Table with Consistent Structure -->
+                        <div class="market-content" id="forex-market">
+                            <div class="market-regions">
+                                <div class="region-tab active" data-region="all">All Pairs</div>
+                                <div class="region-tab" data-region="major">Major</div>
+                                <div class="region-tab" data-region="minor">Minor</div>
+                                <div class="region-tab" data-region="exotic">Exotic</div>
+                            </div>
+
+                            <div class="market-table-container">
+                                <table class="market-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Pair</th>
+                                            <th>Price</th>
+                                            <th>Change</th>
+                                            <th>% Change</th>
+                                            <th>Spread</th>
+                                            <th>Category</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>EUR/USD</td>
+                                            <td>
+                                                <div class="forex-pair">
+                                                    <img src="https://flagcdn.com/w20/eu.png" alt="EUR">
+                                                    <span>/</span>
+                                                    <img src="https://flagcdn.com/w20/us.png" alt="USD">
+                                                    <span>Euro / US Dollar</span>
+                                                </div>
+                                            </td>
+                                            <td>1.0845</td>
+                                            <td><span class="change positive">+0.0025</span></td>
+                                            <td><span class="change positive">+0.23%</span></td>
+                                            <td>0.6 pips</td>
+                                            <td><span class="category major">Major</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>GBP/USD</td>
+                                            <td>
+                                                <div class="forex-pair">
+                                                    <img src="https://flagcdn.com/w20/gb.png" alt="GBP">
+                                                    <span>/</span>
+                                                    <img src="https://flagcdn.com/w20/us.png" alt="USD">
+                                                    <span>British Pound / US Dollar</span>
+                                                </div>
+                                            </td>
+                                            <td>1.2745</td>
+                                            <td><span class="change negative">-0.0035</span></td>
+                                            <td><span class="change negative">-0.27%</span></td>
+                                            <td>0.9 pips</td>
+                                            <td><span class="category major">Major</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>USD/JPY</td>
+                                            <td>
+                                                <div class="forex-pair">
+                                                    <img src="https://flagcdn.com/w20/us.png" alt="USD">
+                                                    <span>/</span>
+                                                    <img src="https://flagcdn.com/w20/jp.png" alt="JPY">
+                                                    <span>US Dollar / Japanese Yen</span>
+                                                </div>
+                                            </td>
+                                            <td>151.25</td>
+                                            <td><span class="change positive">+0.45</span></td>
+                                            <td><span class="change positive">+0.30%</span></td>
+                                            <td>0.8 pips</td>
+                                            <td><span class="category major">Major</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>AUD/CAD</td>
+                                            <td>
+                                                <div class="forex-pair">
+                                                    <img src="https://flagcdn.com/w20/au.png" alt="AUD">
+                                                    <span>/</span>
+                                                    <img src="https://flagcdn.com/w20/ca.png" alt="CAD">
+                                                    <span>Australian Dollar / Canadian Dollar</span>
+                                                </div>
+                                            </td>
+                                            <td>0.9125</td>
+                                            <td><span class="change negative">-0.0045</span></td>
+                                            <td><span class="change negative">-0.49%</span></td>
+                                            <td>1.5 pips</td>
+                                            <td><span class="category minor">Minor</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>USD/MXN</td>
+                                            <td>
+                                                <div class="forex-pair">
+                                                    <img src="https://flagcdn.com/w20/us.png" alt="USD">
+                                                    <span>/</span>
+                                                    <img src="https://flagcdn.com/w20/mx.png" alt="MXN">
+                                                    <span>US Dollar / Mexican Peso</span>
+                                                </div>
+                                            </td>
+                                            <td>16.8745</td>
+                                            <td><span class="change positive">+0.0845</span></td>
+                                            <td><span class="change positive">+0.50%</span></td>
+                                            <td>8.5 pips</td>
+                                            <td><span class="category exotic">Exotic</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Updated Commodities Market Table with Proper Change Spans -->
+                        <div class="market-content" id="commodities-market">
+                            <div class="market-regions">
+                                <div class="region-tab active" data-region="all">All</div>
+                                <div class="region-tab" data-region="metals">Metals</div>
+                                <div class="region-tab" data-region="energy">Energy</div>
+                                <div class="region-tab" data-region="agriculture">Agriculture</div>
+                            </div>
+
+                            <div class="market-table-container">
+                                <table class="market-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Change</th>
+                                            <th>% Change</th>
+                                            <th>Unit</th>
+                                            <th>Category</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>XAUUSD</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/2533/2533523.png"
+                                                        alt="Gold">
+                                                    <span>Gold</span>
+                                                </div>
+                                            </td>
+                                            <td>$2,345.67</td>
+                                            <td><span class="change positive">+$18.75</span></td>
+                                            <td><span class="change positive">+0.81%</span></td>
+                                            <td>per oz</td>
+                                            <td><span class="category metals">Metals</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>XAGUSD</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/2533/2533472.png"
+                                                        alt="Silver">
+                                                    <span>Silver</span>
+                                                </div>
+                                            </td>
+                                            <td>$27.85</td>
+                                            <td><span class="change positive">+$0.45</span></td>
+                                            <td><span class="change positive">+1.64%</span></td>
+                                            <td>per oz</td>
+                                            <td><span class="category metals">Metals</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CL</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/2933/2933939.png"
+                                                        alt="Crude Oil">
+                                                    <span>Crude Oil WTI</span>
+                                                </div>
+                                            </td>
+                                            <td>$78.45</td>
+                                            <td><span class="change negative">-$1.25</span></td>
+                                            <td><span class="change negative">-1.57%</span></td>
+                                            <td>per barrel</td>
+                                            <td><span class="category energy">Energy</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>NG</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/2933/2933912.png"
+                                                        alt="Natural Gas">
+                                                    <span>Natural Gas</span>
+                                                </div>
+                                            </td>
+                                            <td>$2.345</td>
+                                            <td><span class="change positive">+$0.085</span></td>
+                                            <td><span class="change positive">+3.76%</span></td>
+                                            <td>per MMBtu</td>
+                                            <td><span class="category energy">Energy</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>HG</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/2533/2533458.png"
+                                                        alt="Copper">
+                                                    <span>Copper</span>
+                                                </div>
+                                            </td>
+                                            <td>$4.245</td>
+                                            <td><span class="change positive">+$0.075</span></td>
+                                            <td><span class="change positive">+1.80%</span></td>
+                                            <td>per lb</td>
+                                            <td><span class="category metals">Metals</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZC</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/3495/3495435.png"
+                                                        alt="Corn">
+                                                    <span>Corn</span>
+                                                </div>
+                                            </td>
+                                            <td>$4.85</td>
+                                            <td><span class="change negative">-$0.12</span></td>
+                                            <td><span class="change negative">-2.41%</span></td>
+                                            <td>per bushel</td>
+                                            <td><span class="category agriculture">Agriculture</span></td>
+                                            <td><button class="btn-sm">Trade</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Orders Tab with Market Orders -->
+            <div class="dashboard-content" id="orders-tab">
+                <div class="orders-container">
+                    <div class="orders-tabs">
+                        <div class="orders-tab active" data-orders="your">Your Orders</div>
+                        <div class="orders-tab" data-orders="market">Market Orders</div>
+                    </div>
+
+                    <div class="orders-content active" id="your-orders">
+                        <div class="orders-header">
+                            <h3>Your Open Orders</h3>
+                            <button class="btn-outline">Cancel All</button>
+                        </div>
+
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Type</th>
+                                    <th>Side</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AAPL</td>
+                                    <td>Limit</td>
+                                    <td class="side buy">Buy</td>
+                                    <td>10</td>
+                                    <td>$180.00</td>
+                                    <td>$1,800.00</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>2024-03-15 10:23</td>
+                                    <td><button class="btn-sm btn-cancel">Cancel</button></td>
+                                </tr>
+                                <tr>
+                                    <td>TSLA</td>
+                                    <td>Limit</td>
+                                    <td class="side sell">Sell</td>
+                                    <td>5</td>
+                                    <td>$250.00</td>
+                                    <td>$1,250.00</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>2024-03-15 09:45</td>
+                                    <td><button class="btn-sm btn-cancel">Cancel</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="orders-header">
+                            <h3>Order History</h3>
+                        </div>
+
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Type</th>
+                                    <th>Side</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MSFT</td>
+                                    <td>Market</td>
+                                    <td class="side buy">Buy</td>
+                                    <td>5</td>
+                                    <td>$342.78</td>
+                                    <td>$1,713.90</td>
+                                    <td><span class="status-badge status-filled">Filled</span></td>
+                                    <td>2024-03-14 14:32</td>
+                                </tr>
+                                <tr>
+                                    <td>GOOGL</td>
+                                    <td>Limit</td>
+                                    <td class="side buy">Buy</td>
+                                    <td>8</td>
+                                    <td>$137.50</td>
+                                    <td>$1,100.00</td>
+                                    <td><span class="status-badge status-filled">Filled</span></td>
+                                    <td>2024-03-13 11:05</td>
+                                </tr>
+                                <tr>
+                                    <td>AMZN</td>
+                                    <td>Limit</td>
+                                    <td class="side sell">Sell</td>
+                                    <td>3</td>
+                                    <td>$130.25</td>
+                                    <td>$390.75</td>
+                                    <td><span class="status-badge status-filled">Filled</span></td>
+                                    <td>2024-03-12 15:47</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="orders-content" id="market-orders">
+                        <div class="orders-header">
+                            <h3>Available Market Orders</h3>
+                            <div class="filter-container">
+                                <select class="filter-select">
+                                    <option value="all">All Symbols</option>
+                                    <option value="AAPL">AAPL</option>
+                                    <option value="MSFT">MSFT</option>
+                                    <option value="GOOGL">GOOGL</option>
+                                    <option value="AMZN">AMZN</option>
+                                    <option value="TSLA">TSLA</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="market-orders-container">
+                            <div class="market-orders-section">
+                                <h4>Buy Orders</h4>
+                                <table class="market-orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>AAPL</td>
+                                            <td>$180.00</td>
+                                            <td>25</td>
+                                            <td>$4,500.00</td>
+                                            <td><button class="btn-sm btn-sell">Sell</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>MSFT</td>
+                                            <td>$340.50</td>
+                                            <td>10</td>
+                                            <td>$3,405.00</td>
+                                            <td><button class="btn-sm btn-sell">Sell</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>GOOGL</td>
+                                            <td>$137.25</td>
+                                            <td>15</td>
+                                            <td>$2,058.75</td>
+                                            <td><button class="btn-sm btn-sell">Sell</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>AMZN</td>
+                                            <td>$129.75</td>
+                                            <td>12</td>
+                                            <td>$1,557.00</td>
+                                            <td><button class="btn-sm btn-sell">Sell</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="market-orders-section">
+                                <h4>Sell Orders</h4>
+                                <table class="market-orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>AAPL</td>
+                                            <td>$182.75</td>
+                                            <td>18</td>
+                                            <td>$3,289.50</td>
+                                            <td><button class="btn-sm btn-buy">Buy</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>MSFT</td>
+                                            <td>$343.25</td>
+                                            <td>8</td>
+                                            <td>$2,746.00</td>
+                                            <td><button class="btn-sm btn-buy">Buy</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>GOOGL</td>
+                                            <td>$138.50</td>
+                                            <td>20</td>
+                                            <td>$2,770.00</td>
+                                            <td><button class="btn-sm btn-buy">Buy</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>TSLA</td>
+                                            <td>$248.75</td>
+                                            <td>5</td>
+                                            <td>$1,243.75</td>
+                                            <td><button class="btn-sm btn-buy">Buy</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deposit Tab with Enhanced UI -->
+            <div class="dashboard-content" id="deposit-tab">
+                <div class="deposit-container">
+                    <div class="deposit-card">
+                        <h3>Deposit USDC</h3>
+                        <div class="deposit-methods">
+                            <div class="deposit-method-tab active" data-method="crypto">
+                                <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC">
+                                <span>Crypto</span>
+                            </div>
+                            <div class="deposit-method-tab" data-method="bank">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt="Bank">
+                                <span>Bank Transfer</span>
+                            </div>
+                            <div class="deposit-method-tab" data-method="card">
+                                <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Card">
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+
+                        <div class="deposit-method-content active" id="crypto-method">
+                            <div class="deposit-form">
+                                <label>Amount (USDC)</label>
+                                <input type="number" placeholder="Enter amount" min="1" value="1000">
+
+                                <label>Select Deposit Method</label>
+                                <div class="deposit-options">
+                                    <div class="deposit-option selected">
+                                        <input type="radio" name="deposit-speed" id="instant"
+                                            class="deposit-option-radio" checked>
+                                        <div class="deposit-option-icon">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/6941/6941697.png"
+                                                alt="Instant">
+                                        </div>
+                                        <div class="deposit-option-details">
+                                            <div class="deposit-option-title">Instant Deposit</div>
+                                            <div class="deposit-option-description">Funds available immediately
+                                            </div>
+                                        </div>
+                                        <div class="deposit-option-fee">0.1% fee</div>
+                                    </div>
+                                    <div class="deposit-option">
+                                        <input type="radio" name="deposit-speed" id="standard"
+                                            class="deposit-option-radio">
+                                        <div class="deposit-option-icon">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/2972/2972531.png"
+                                                alt="Standard">
+                                        </div>
+                                        <div class="deposit-option-details">
+                                            <div class="deposit-option-title">Standard Deposit</div>
+                                            <div class="deposit-option-description">Funds available in 1-3 days
+                                            </div>
+                                        </div>
+                                        <div class="deposit-option-fee">No fee</div>
+                                    </div>
+                                </div>
+
+                                <label>Your USDC Address</label>
+                                <div class="address-input">
+                                    <input type="text" value="0x1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t" readonly>
+                                    <button class="btn-icon" title="Copy address"><i class="fas fa-copy"></i></button>
+                                </div>
+
+                                <div class="supported-networks">
+                                    <span>Supported Networks:</span>
+                                    <div class="network-icons">
+                                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum"
+                                            title="Ethereum">
+                                        <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon"
+                                            title="Polygon">
+                                        <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche"
+                                            title="Avalanche">
+                                        <img src="https://cryptologos.cc/logos/arbitrum-arb-logo.png" alt="Arbitrum"
+                                            title="Arbitrum">
+                                    </div>
+                                </div>
+
+                                <button class="btn-primary" style="width: 100%; margin-top: 20px;">Deposit
+                                    Funds</button>
+                            </div>
+                        </div>
+
+                        <div class="deposit-method-content" id="bank-method">
+                            <div class="deposit-form">
+                                <label>Amount (USD)</label>
+                                <input type="number" placeholder="Enter amount" min="1" value="1000">
+
+                                <label>Select Bank</label>
+                                <div class="bank-selection">
+                                    <div class="bank-option">
+                                        <img src="https://logo.clearbit.com/chase.com" alt="Chase"
+                                            onerror="this.src='https://cdn-icons-png.flaticon.com/512/4616/4616089.png'">
+                                        <span>Chase</span>
+                                    </div>
+                                    <div class="bank-option">
+                                        <img src="https://logo.clearbit.com/bankofamerica.com" alt="Bank of America"
+                                            onerror="this.src='https://cdn-icons-png.flaticon.com/512/2164/2164656.png'">
+                                        <span>Bank of America</span>
+                                    </div>
+                                    <div class="bank-option">
+                                        <img src="https://logo.clearbit.com/wellsfargo.com" alt="Wells Fargo"
+                                            onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968416.png'">
+                                        <span>Wells Fargo</span>
+                                    </div>
+                                    <div class="bank-option">
+                                        <img src="https://logo.clearbit.com/citibank.com" alt="Citibank"
+                                            onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968404.png'">
+                                        <span>Citibank</span>
+                                    </div>
+                                    <div class="bank-option add-new">
+                                        <i class="fas fa-plus-circle"></i>
+                                        <span>Add New Bank</span>
+                                    </div>
+                                </div>
+
+                                <div class="deposit-timing">
+                                    <div class="timing-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="timing-details">
+                                        <div class="timing-title">Processing Time</div>
+                                        <div class="timing-description">1-3 business days</div>
+                                    </div>
+                                </div>
+
+                                <button class="btn-primary" style="width: 100%; margin-top: 20px;">Continue to
+                                    Bank</button>
+                            </div>
+                        </div>
+
+                        <div class="deposit-method-content" id="card-method">
+                            <div class="deposit-form">
+                                <label>Amount (USD)</label>
+                                <input type="number" placeholder="Enter amount" min="1" value="1000">
+
+                                <label>Card Information</label>
+                                <div class="card-input">
+                                    <div class="card-icons">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png"
+                                            alt="Mastercard">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/196/196539.png" alt="Amex">
+                                    </div>
+                                    <input type="text" placeholder="Card Number">
+                                </div>
+
+                                <div class="card-details">
+                                    <input type="text" placeholder="MM/YY">
+                                    <input type="text" placeholder="CVC">
+                                </div>
+
+                                <div class="card-name">
+                                    <input type="text" placeholder="Cardholder Name">
+                                </div>
+
+                                <div class="fee-notice">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>A 3% fee applies to credit card deposits</span>
+                                </div>
+
+                                <button class="btn-primary" style="width: 100%; margin-top: 20px;">Pay Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="deposit-card">
+                        <h3>Recent Transactions</h3>
+                        <div class="transaction-list">
+                            <div class="transaction">
+                                <div class="transaction-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">USDC Deposit</div>
+                                    <div class="transaction-date">2024-03-14 09:23</div>
+                                </div>
+                                <div class="transaction-amount">+1,000 USDC</div>
+                                <div class="transaction-status completed">Completed</div>
+                            </div>
+                            <div class="transaction">
+                                <div class="transaction-icon withdraw"><i class="fas fa-arrow-up"></i></div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">USDC Withdrawal</div>
+                                    <div class="transaction-date">2024-03-10 15:47</div>
+                                </div>
+                                <div class="transaction-amount">-500 USDC</div>
+                                <div class="transaction-status completed">Completed</div>
+                            </div>
+                            <div class="transaction">
+                                <div class="transaction-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">USDC Deposit</div>
+                                    <div class="transaction-date">2024-03-05 11:32</div>
+                                </div>
+                                <div class="transaction-amount">+2,500 USDC</div>
+                                <div class="transaction-status completed">Completed</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wallet Tab -->
+            <div class="dashboard-content" id="wallet-tab">
+                <div class="wallet-container">
+                    <div class="wallet-overview">
+                        <div class="wallet-card main">
+                            <h3>USDC Balance</h3>
+                            <div class="wallet-balance">5,234.89 USDC</div>
+                            <div class="wallet-actions">
+                                <button class="btn-primary">Deposit</button>
+                                <button class="btn-secondary">Withdraw</button>
+                            </div>
+                        </div>
+                        <div class="wallet-card">
+                            <h3>Connected Wallet</h3>
+                            <div class="wallet-address">
+                                <i class="fas fa-wallet"></i>
+                                <span>0x7a2...f9e3</span>
+                                <span class="wallet-badge">Ethereum</span>
+                            </div>
+                            <button class="btn-outline">Disconnect</button>
+                        </div>
+                    </div>
+                    <div class="wallet-assets">
+                        <h3>Your Assets</h3>
+                        <table class="assets-table">
+                            <thead>
+                                <tr>
+                                    <th>Asset</th>
+                                    <th>Balance</th>
+                                    <th>Value (USD)</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="asset-info">
+                                            <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC">
+                                            <span>USDC</span>
+                                        </div>
+                                    </td>
+                                    <td>5,234.89</td>
+                                    <td>$5,234.89</td>
+                                    <td>
+                                        <button class="btn-sm">Deposit</button>
+                                        <button class="btn-sm">Withdraw</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-info">
+                                            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">
+                                            <span>ETH</span>
+                                        </div>
+                                    </td>
+                                    <td>0.25</td>
+                                    <td>$750.25</td>
+                                    <td>
+                                        <button class="btn-sm">Deposit</button>
+                                        <button class="btn-sm">Withdraw</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 

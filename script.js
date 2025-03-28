@@ -166,21 +166,59 @@ if (cube) {
 document.addEventListener('DOMContentLoaded', function () {
     // Tab switching functionality
     const tabs = document.querySelectorAll('.tab');
-    const dashboardContents = document.querySelectorAll('.dashboard-content');
+    const contents = document.querySelectorAll('.dashboard-content');
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            const tabId = tab.getAttribute('data-tab');
-
-            // Remove active class from all tabs and contents
+            // Remove active class from all tabs
             tabs.forEach(t => t.classList.remove('active'));
-            dashboardContents.forEach(content => content.classList.remove('active'));
-
-            // Add active class to clicked tab and corresponding content
+            // Add active class to clicked tab
             tab.classList.add('active');
+
+            // Hide all content
+            contents.forEach(content => content.classList.remove('active'));
+            // Show corresponding content
+            const tabId = tab.getAttribute('data-tab');
             document.getElementById(`${tabId}-tab`).classList.add('active');
         });
     });
+
+    // Market tab functionality
+    if (document.querySelector('.market-tab')) {
+        const marketTabs = document.querySelectorAll('.market-tab');
+        const marketContents = document.querySelectorAll('.market-content');
+
+        marketTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                marketTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Hide all content
+                marketContents.forEach(content => content.classList.remove('active'));
+                // Show corresponding content
+                const market = tab.getAttribute('data-market');
+                document.getElementById(`${market}-market`).classList.add('active');
+            });
+        });
+    }
+
+    // Region tab switching
+    if (document.querySelector('.region-tab')) {
+        const regionTabs = document.querySelectorAll('.region-tab');
+
+        regionTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Find parent market content
+                const marketContent = tab.closest('.market-content');
+                // Remove active class from all region tabs in this market
+                marketContent.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+            });
+        });
+    }
 
     // Trade form functionality
     const tradeForm = document.querySelector('.trade-form');
@@ -1787,4 +1825,44 @@ document.addEventListener('DOMContentLoaded', function () {
         script.onload = initializeChart;
         document.head.appendChild(script);
     }
+});
+
+// Global Market Tab Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    // Market tab switching
+    const marketTabs = document.querySelectorAll('.market-tab');
+    const marketContents = document.querySelectorAll('.market-content');
+
+    marketTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            marketTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            // Hide all content
+            marketContents.forEach(content => content.classList.remove('active'));
+            // Show corresponding content
+            const market = tab.getAttribute('data-market');
+            document.getElementById(`${market}-market`).classList.add('active');
+        });
+    });
+
+    // Region tab switching
+    const regionTabs = document.querySelectorAll('.region-tab');
+
+    regionTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Find parent market content
+            const marketContent = tab.closest('.market-content');
+            // Remove active class from all region tabs in this market
+            marketContent.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            // Filter table rows based on region (this would be implemented with actual data)
+            const region = tab.getAttribute('data-region');
+            // Implementation would filter the table rows
+        });
+    });
 });
