@@ -777,3 +777,30 @@ function hideToast(toast) {
         }
     }, 300);
 }
+
+// Add this to optimize performance
+document.addEventListener('DOMContentLoaded', function () {
+    // Defer loading of non-critical scripts
+    setTimeout(function () {
+        const deferredScripts = ['analytics.js', 'non-critical.js'];
+        deferredScripts.forEach(script => {
+            const scriptEl = document.createElement('script');
+            scriptEl.src = script;
+            document.body.appendChild(scriptEl);
+        });
+    }, 3000);
+});
+
+// Add page preloading
+const preloadLinks = [
+    { rel: 'preload', href: 'tokenization.png', as: 'image' },
+    { rel: 'preload', href: 'style.css', as: 'style' }
+];
+
+preloadLinks.forEach(link => {
+    const linkEl = document.createElement('link');
+    linkEl.rel = link.rel;
+    linkEl.href = link.href;
+    linkEl.as = link.as;
+    document.head.appendChild(linkEl);
+});
