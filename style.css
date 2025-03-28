@@ -1957,3 +1957,1093 @@ footer::before {
     height: 100%;
     min-height: 400px;
 }
+
+/* Dashboard Styles */
+.dashboard-preview {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.dashboard-container {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    margin-top: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tabs */
+.dashboard-tabs {
+    display: flex;
+    background: var(--bg-color);
+    padding: 15px 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab {
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: var(--transition);
+    border-bottom: 2px solid transparent;
+    margin-right: 5px;
+}
+
+.tab.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    background: var(--card-bg);
+}
+
+.tab:hover:not(.active) {
+    color: var(--text-color);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    display: none;
+    height: 700px;
+    /* Fixed height for all tabs */
+    overflow-y: auto;
+}
+
+.dashboard-content.active {
+    display: block;
+}
+
+/* Portfolio Tab */
+.portfolio-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.portfolio-card {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-card h3 {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.portfolio-card .value {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.portfolio-card .change {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.change.positive {
+    color: var(--accent-color);
+}
+
+.change.negative {
+    color: var(--error-color);
+}
+
+.portfolio-holdings {
+    padding: 0 20px 20px;
+}
+
+.portfolio-holdings h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.holdings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.holdings-table th,
+.holdings-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.holdings-table th {
+    font-weight: 500;
+    color: var(--text-light);
+    background: var(--bg-color);
+}
+
+/* Trade Tab */
+.trade-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    padding: 20px;
+    height: 100%;
+}
+
+.trade-sidebar {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.trade-sidebar h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.trade-form .form-group {
+    margin-bottom: 15px;
+}
+
+.trade-form label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.trade-form input,
+.trade-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.trade-form .total-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 10px 0;
+}
+
+.trade-chart {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.trade-chart h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stock-price {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.stock-change {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.timeframe-selector {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.timeframe-btn {
+    padding: 5px 10px;
+    font-size: 13px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.timeframe-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Orders Tab */
+.orders-container {
+    padding: 20px;
+}
+
+.orders-container h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.orders-table th {
+    font-weight: 500;
+    color: var(--text-light);
+    background: var(--bg-color);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: rgba(255, 171, 0, 0.1);
+    color: #ffab00;
+}
+
+.status-filled {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+.status-canceled {
+    background: rgba(108, 117, 125, 0.1);
+    color: #6c757d;
+}
+
+.btn-text {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-text:hover {
+    text-decoration: underline;
+}
+
+/* Deposit Tab */
+.deposit-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.deposit-card {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.deposit-card h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.deposit-form label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.deposit-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.deposit-options {
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.deposit-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.deposit-option:last-child {
+    border-bottom: none;
+}
+
+.deposit-option.selected {
+    background: rgba(0, 82, 204, 0.05);
+}
+
+.deposit-option-radio {
+    margin-right: 15px;
+}
+
+.deposit-option-details {
+    flex: 1;
+}
+
+.deposit-option-title {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.deposit-option-description {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.deposit-option-fee {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.deposit-info {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 82, 204, 0.05);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.transaction-list {
+    margin-top: 10px;
+}
+
+.transaction {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.transaction-icon.deposit {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+.transaction-icon.withdraw {
+    background: rgba(255, 86, 48, 0.1);
+    color: var(--error-color);
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.transaction-title {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.transaction-date {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.transaction-amount {
+    font-weight: 500;
+    font-size: 14px;
+    margin-right: 15px;
+}
+
+.transaction-status {
+    font-size: 13px;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.transaction-status.completed {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+}
+
+.transaction-status.pending {
+    background: rgba(255, 171, 0, 0.1);
+    color: #ffab00;
+}
+
+/* Wallet Tab */
+.wallet-container {
+    padding: 20px;
+    height: 100%;
+}
+
+.wallet-overview {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.wallet-card {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.wallet-card.main {
+    background: linear-gradient(135deg, var(--primary-color), #0052cc);
+    color: white;
+}
+
+.wallet-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: inherit;
+}
+
+.wallet-balance {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.wallet-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.wallet-address {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.wallet-address i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.wallet-badge {
+    margin-left: 10px;
+    background: rgba(0, 82, 204, 0.1);
+    color: var(--primary-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.wallet-assets h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.assets-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.assets-table th,
+.assets-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.assets-table th {
+    font-weight: 500;
+    color: var(--text-light);
+    background: var(--bg-color);
+}
+
+.asset-info {
+    display: flex;
+    align-items: center;
+}
+
+.asset-info img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 13px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Side Button Styles */
+.side-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.side-btn {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.side-btn.buy.active {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.side-btn.sell.active {
+    background: rgba(255, 86, 48, 0.1);
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+/* Copy tooltip */
+.address-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.address-input input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.btn-icon {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.copy-tooltip {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: var(--text-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+.copy-tooltip:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--text-color);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .trade-container {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-overview {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .wallet-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .deposit-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-tabs {
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .tab {
+        white-space: nowrap;
+    }
+
+    .dashboard-content {
+        height: auto;
+        max-height: 800px;
+    }
+}
+
+/* Additional styles for enhanced deposit and orders UI */
+.deposit-methods {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.deposit-method-tab {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.deposit-method-tab img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.deposit-method-tab.active {
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.deposit-method-content {
+    display: none;
+}
+
+.deposit-method-content.active {
+    display: block;
+}
+
+.deposit-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.deposit-option.selected {
+    border-color: var(--primary-color);
+    background: rgba(0, 82, 204, 0.05);
+}
+
+.deposit-option-radio {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.deposit-option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.deposit-option-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.deposit-option-details {
+    flex: 1;
+}
+
+.deposit-option-title {
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.deposit-option-description {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.deposit-option-fee {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 10px;
+}
+
+/* Bank selection styling fix */
+.bank-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.bank-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: 100px;
+}
+
+.bank-option.selected {
+    border-color: var(--primary-color);
+    background: rgba(0, 82, 204, 0.05);
+}
+
+.bank-option img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.bank-option span {
+    font-size: 13px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.bank-option.add-new {
+    border-style: dashed;
+}
+
+.bank-option.add-new i {
+    font-size: 24px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.deposit-timing {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.timing-icon {
+    margin-right: 15px;
+    font-size: 24px;
+    color: var(--text-light);
+}
+
+.timing-title {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.timing-description {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.card-input {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.card-icons {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.card-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+.card-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.fee-notice {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 171, 0, 0.1);
+    color: #ffab00;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.fee-notice i {
+    margin-right: 8px;
+}
+
+/* Orders Tab Styles */
+.orders-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.orders-tab {
+    padding: 15px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.orders-tab.active {
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.orders-content {
+    display: none;
+    padding: 0 20px 20px;
+}
+
+.orders-content.active {
+    display: block;
+}
+
+.orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.orders-header h3 {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.market-orders-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.market-orders-section h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.market-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.market-orders-table th,
+.market-orders-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.market-orders-table th {
+    font-weight: 500;
+    color: var(--text-light);
+    background: var(--bg-color);
+}
+
+.btn-buy {
+    background: var(--accent-color);
+}
+
+.btn-sell {
+    background: var(--error-color);
+}
+
+.btn-cancel {
+    background: var(--text-light);
+}
+
+.side {
+    font-weight: 500;
+}
+
+.side.buy {
+    color: var(--accent-color);
+}
+
+.side.sell {
+    color: var(--error-color);
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+@media (max-width: 992px) {
+    .market-orders-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Fixed network logos and deposit method icons */
+.supported-networks {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 12px 15px;
+    background: var(--bg-color);
+    border-radius: 6px;
+}
+
+.supported-networks span {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-right: 15px;
+    white-space: nowrap;
+}
+
+.network-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.network-icons img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Standardized deposit option icons */
+.deposit-option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    background: var(--bg-color);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.deposit-option-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}

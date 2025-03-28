@@ -163,7 +163,392 @@ if (cube) {
 }
 
 // Dashboard functionality
-initDashboard();
+document.addEventListener('DOMContentLoaded', function () {
+    // Tab switching functionality
+    const tabs = document.querySelectorAll('.tab');
+    const dashboardContents = document.querySelectorAll('.dashboard-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+
+            // Remove active class from all tabs and contents
+            tabs.forEach(t => t.classList.remove('active'));
+            dashboardContents.forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('active');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+    });
+
+    // Trade form functionality
+    const tradeForm = document.querySelector('.trade-form');
+    if (tradeForm) {
+        const quantityInput = tradeForm.querySelector('input[type="number"][min="1"]');
+        const priceInput = tradeForm.querySelector('input[type="number"][step="0.01"]');
+        const totalValue = tradeForm.querySelector('.total-value');
+        const sideBtns = tradeForm.querySelectorAll('.side-btn');
+
+        // Calculate total
+        const calculateTotal = () => {
+            const quantity = parseFloat(quantityInput.value) || 0;
+            const price = parseFloat(priceInput.value) || 0;
+            const total = (quantity * price).toFixed(2);
+            totalValue.textContent = `$${total}`;
+        };
+
+        // Update total when inputs change
+        quantityInput.addEventListener('input', calculateTotal);
+        priceInput.addEventListener('input', calculateTotal);
+
+        // Side button toggle
+        sideBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sideBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Initialize chart
+        initializeChart();
+    }
+
+    // Copy address functionality
+    const copyBtn = document.querySelector('.btn-icon[title="Copy address"]');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const addressInput = document.querySelector('.address-input input');
+            addressInput.select();
+            document.execCommand('copy');
+
+            // Show copied tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'copy-tooltip';
+            tooltip.textContent = 'Copied!';
+            copyBtn.appendChild(tooltip);
+
+            // Remove tooltip after 2 seconds
+            setTimeout(() => {
+                tooltip.remove();
+            }, 2000);
+        });
+    }
+});
+
+// Initialize stock chart
+function initializeChart() {
+    const chartElement = document.getElementById('stock-chart');
+    if (!chartElement) return;
+
+    // Sample data for the chart
+    const stockData = generateStockData();
+
+    const options = {
+        series: [{
+            name: 'AAPL',
+            data: stockData
+        }],
+        chart: {
+            type: 'area',
+            height: 350,
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth',
+            width: 2,
+            colors: ['#0052cc']
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 90, 100],
+                colorStops: [
+                    {
+                        offset: 0,
+                        color: '#0052cc',
+                        opacity: 0.4
+                    },
+                    {
+                        offset: 100,
+                        color: '#0052cc',
+                        opacity: 0
+                    }
+                ]
+            }
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                formatter: function (value) {
+                    return new Date(value).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric'
+                    });
+                }
+            },
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            }
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return '$' + value.toFixed(2);
+                }
+            }
+        },
+        tooltip: {
+            x: {
+                format: 'MMM dd'
+            },
+            y: {
+                formatter: function (value) {
+                    return '$' + value.toFixed(2);
+                }
+            },
+            theme: 'light'
+        },
+        grid: {
+            borderColor: '#f1f1f1',
+            strokeDashArray: 4,
+            xaxis: {
+                lines: {
+                    show: true
+                }
+            },
+            yaxis: {
+                lines: {
+                    show: true
+                }
+            }
+        }
+    };
+
+    // Initialize ApexCharts
+    if (typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(chartElement, options);
+        chart.render();
+    } else {
+        // Fallback if ApexCharts is not loaded
+        chartElement.innerHTML = '<div class="chart-fallback">Chart loading...</div>';
+
+        // Try to load ApexCharts dynamically
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js';
+        script.onload = function () {
+            const chart = new ApexCharts(chartElement, options);
+            chart.render();
+        };
+        document.head.appendChild(script);
+    }
+}
+
+// Generate sample stock data
+function generateStockData() {
+    const data = [];
+    let date = new Date();
+    date.setDate(date.getDate() - 30); // Start from 30 days ago
+
+    let value = 175 + Math.random() * 10;
+
+    for (let i = 0; i < 30; i++) {
+        date.setDate(date.getDate() + 1);
+
+        // Random walk with slight upward bias
+        value = value + (Math.random() - 0.45) * 5;
+
+        // Ensure value stays within reasonable range
+        value = Math.max(value, 165);
+        value = Math.min(value, 195);
+
+        data.push([date.getTime(), parseFloat(value.toFixed(2))]);
+    }
+
+    return data;
+}
+
+// Add these styles to your CSS
+const additionalStyles = `
+/* Chart Styles */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stock-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.stock-price {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.timeframe-selector {
+    display: flex;
+    gap: 5px;
+}
+
+.timeframe-btn {
+    padding: 5px 10px;
+    font-size: 13px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.timeframe-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.chart-fallback {
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 16px;
+    background: var(--bg-color);
+    border-radius: 8px;
+}
+
+/* Side Button Styles */
+.side-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.side-btn {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.side-btn.buy.active {
+    background: rgba(54, 179, 126, 0.1);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.side-btn.sell.active {
+    background: rgba(255, 86, 48, 0.1);
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+/* Copy tooltip */
+.address-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.address-input input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.btn-icon {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.copy-tooltip {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: var(--text-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+.copy-tooltip:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--text-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .trade-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-overview {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .wallet-overview {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-tabs {
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+    
+    .tab {
+        white-space: nowrap;
+    }
+    
+    .dashboard-content {
+        height: auto;
+        max-height: 800px;
+    }
+}
+`;
+
+// Add the styles to the document
+const styleElement = document.createElement('style');
+styleElement.textContent = additionalStyles;
+document.head.appendChild(styleElement);
 
 // Create toast container
 const toastContainer = document.createElement('div');
@@ -460,12 +845,21 @@ if (orderTypeSelect && limitPriceGroup) {
 
 // Deposit option selection
 const depositOptions = document.querySelectorAll('.deposit-option');
-depositOptions.forEach(option => {
-    option.addEventListener('click', function () {
-        depositOptions.forEach(opt => opt.classList.remove('active'));
-        this.classList.add('active');
+if (depositOptions.length > 0) {
+    depositOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove selected class from all options
+            depositOptions.forEach(opt => opt.classList.remove('selected'));
+
+            // Add selected class to clicked option
+            option.classList.add('selected');
+
+            // Check the radio button
+            const radio = option.querySelector('input[type="radio"]');
+            radio.checked = true;
+        });
     });
-});
+}
 
 // Cancel order functionality
 const cancelButtons = document.querySelectorAll('.cancel-order');
@@ -1030,3 +1424,367 @@ if (document.readyState === 'loading') {
 } else {
     addCanonicalLinksToDOM();
 }
+
+// Deposit method tabs
+const depositMethodTabs = document.querySelectorAll('.deposit-method-tab');
+const depositMethodContents = document.querySelectorAll('.deposit-method-content');
+
+if (depositMethodTabs.length > 0) {
+    depositMethodTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const method = tab.getAttribute('data-method');
+
+            // Remove active class from all tabs and contents
+            depositMethodTabs.forEach(t => t.classList.remove('active'));
+            depositMethodContents.forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('active');
+            document.getElementById(`${method}-method`).classList.add('active');
+        });
+    });
+}
+
+// Bank option selection
+const bankOptions = document.querySelectorAll('.bank-option');
+if (bankOptions.length > 0) {
+    bankOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            bankOptions.forEach(opt => opt.classList.remove('selected'));
+            if (!option.classList.contains('add-new')) {
+                option.classList.add('selected');
+            } else {
+                // Handle add new bank logic
+                console.log('Add new bank clicked');
+            }
+        });
+    });
+}
+
+// Orders tab switching
+const ordersTabs = document.querySelectorAll('.orders-tab');
+const ordersContents = document.querySelectorAll('.orders-content');
+
+if (ordersTabs.length > 0) {
+    ordersTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const ordersType = tab.getAttribute('data-orders');
+
+            // Remove active class from all tabs and contents
+            ordersTabs.forEach(t => t.classList.remove('active'));
+            ordersContents.forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('active');
+            document.getElementById(`${ordersType}-orders`).classList.add('active');
+        });
+    });
+}
+
+// Market orders filter
+const filterSelect = document.querySelector('.filter-select');
+if (filterSelect) {
+    filterSelect.addEventListener('change', () => {
+        const selectedSymbol = filterSelect.value;
+        const orderRows = document.querySelectorAll('.market-orders-table tbody tr');
+
+        orderRows.forEach(row => {
+            const symbol = row.querySelector('td').textContent;
+            if (selectedSymbol === 'all' || symbol === selectedSymbol) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+}
+
+// Buy/Sell buttons in market orders
+const marketActionButtons = document.querySelectorAll('.market-orders-table .btn-buy, .market-orders-table .btn-sell');
+if (marketActionButtons.length > 0) {
+    marketActionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const row = button.closest('tr');
+            const symbol = row.querySelector('td:first-child').textContent;
+            const price = row.querySelector('td:nth-child(2)').textContent;
+            const quantity = row.querySelector('td:nth-child(3)').textContent;
+
+            // Switch to trade tab
+            const tradeTab = document.querySelector('.tab[data-tab="trade"]');
+            if (tradeTab) tradeTab.click();
+
+            // Fill in the trade form
+            setTimeout(() => {
+                const symbolInput = document.querySelector('.trade-form input[placeholder="Enter stock symbol"]');
+                const quantityInput = document.querySelector('.trade-form input[type="number"][min="1"]');
+                const priceInput = document.querySelector('.trade-form input[type="number"][step="0.01"]');
+                const sideBtns = document.querySelectorAll('.side-btn');
+
+                if (symbolInput) symbolInput.value = symbol;
+                if (quantityInput) quantityInput.value = quantity;
+                if (priceInput) priceInput.value = price.replace('$', '');
+
+                // Set the correct side (buy/sell)
+                if (sideBtns.length > 0) {
+                    if (button.classList.contains('btn-buy')) {
+                        sideBtns[0].click(); // Buy button
+                    } else {
+                        sideBtns[1].click(); // Sell button
+                    }
+                }
+
+                // Calculate total
+                if (quantityInput && priceInput) {
+                    const event = new Event('input');
+                    quantityInput.dispatchEvent(event);
+                }
+            }, 100);
+        });
+    });
+}
+
+// Card input formatting
+const cardNumberInput = document.querySelector('.card-input input');
+if (cardNumberInput) {
+    cardNumberInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 16) value = value.slice(0, 16);
+
+        // Format with spaces
+        const parts = [];
+        for (let i = 0; i < value.length; i += 4) {
+            parts.push(value.slice(i, i + 4));
+        }
+        e.target.value = parts.join(' ');
+    });
+}
+
+// Expiry date formatting
+const expiryInput = document.querySelector('.card-details input[placeholder="MM/YY"]');
+if (expiryInput) {
+    expiryInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 4) value = value.slice(0, 4);
+
+        if (value.length > 2) {
+            e.target.value = value.slice(0, 2) + '/' + value.slice(2);
+        } else {
+            e.target.value = value;
+        }
+    });
+}
+
+// CVC formatting
+const cvcInput = document.querySelector('.card-details input[placeholder="CVC"]');
+if (cvcInput) {
+    cvcInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 3) value = value.slice(0, 3);
+        e.target.value = value;
+    });
+}
+
+// Initialize stock chart with more realistic data
+function initializeChart() {
+    const chartElement = document.getElementById('stock-chart');
+    if (!chartElement) return;
+
+    // Generate more realistic stock data
+    const stockData = generateRealisticStockData();
+
+    const options = {
+        series: [{
+            name: 'AAPL',
+            data: stockData
+        }],
+        chart: {
+            type: 'area',
+            height: 350,
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false
+            },
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 800
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth',
+            width: 2,
+            colors: ['#0052cc']
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 90, 100],
+                colorStops: [
+                    {
+                        offset: 0,
+                        color: '#0052cc',
+                        opacity: 0.4
+                    },
+                    {
+                        offset: 100,
+                        color: '#0052cc',
+                        opacity: 0
+                    }
+                ]
+            }
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                formatter: function (value) {
+                    return new Date(value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                }
+            },
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            }
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return '$' + value.toFixed(2);
+                }
+            }
+        },
+        tooltip: {
+            x: {
+                format: 'HH:mm'
+            },
+            y: {
+                formatter: function (value) {
+                    return '$' + value.toFixed(2);
+                }
+            },
+            theme: 'light',
+            style: {
+                fontSize: '12px',
+                fontFamily: 'Inter, sans-serif'
+            }
+        },
+        grid: {
+            borderColor: '#f1f1f1',
+            strokeDashArray: 4,
+            xaxis: {
+                lines: {
+                    show: true
+                }
+            },
+            yaxis: {
+                lines: {
+                    show: true
+                }
+            }
+        },
+        markers: {
+            size: 0,
+            strokeWidth: 0
+        }
+    };
+
+    const chart = new ApexCharts(chartElement, options);
+    chart.render();
+
+    // Time period buttons
+    const timeButtons = document.querySelectorAll('.time-btn');
+    if (timeButtons.length > 0) {
+        timeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                timeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update chart data based on time period
+                const period = btn.getAttribute('data-time');
+                let newData;
+
+                switch (period) {
+                    case '1d':
+                        newData = generateRealisticStockData(24); // 24 hours
+                        break;
+                    case '1w':
+                        newData = generateRealisticStockData(7 * 24); // 7 days
+                        break;
+                    case '1m':
+                        newData = generateRealisticStockData(30 * 24); // 30 days
+                        break;
+                    case '3m':
+                        newData = generateRealisticStockData(90 * 24); // 90 days
+                        break;
+                    case '1y':
+                        newData = generateRealisticStockData(365 * 24); // 1 year
+                        break;
+                    default:
+                        newData = generateRealisticStockData();
+                }
+
+                chart.updateSeries([{
+                    name: 'AAPL',
+                    data: newData
+                }]);
+            });
+        });
+    }
+}
+
+// Generate realistic stock data
+function generateRealisticStockData(points = 48) {
+    const data = [];
+    let price = 182.50; // Starting price
+    const volatility = 0.01; // 1% volatility
+    const trend = 0.0002; // Slight upward trend
+
+    const now = new Date();
+    const msPerPoint = (24 * 60 * 60 * 1000) / points;
+
+    for (let i = points; i > 0; i--) {
+        const time = new Date(now.getTime() - (i * msPerPoint));
+
+        // Random walk with slight trend
+        const change = (Math.random() - 0.5) * volatility + trend;
+        price = price * (1 + change);
+
+        // Add some market patterns
+        // Morning dip
+        if (time.getHours() === 10) price *= 0.998;
+        // Lunch dip
+        if (time.getHours() === 12) price *= 0.997;
+        // Afternoon rally
+        if (time.getHours() === 15) price *= 1.002;
+
+        data.push({
+            x: time.getTime(),
+            y: parseFloat(price.toFixed(2))
+        });
+    }
+
+    return data;
+}
+
+// Call chart initialization when DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize all dashboard functionality
+    initializeChart();
+
+    // Load ApexCharts if not already loaded
+    if (typeof ApexCharts === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js';
+        script.onload = initializeChart;
+        document.head.appendChild(script);
+    }
+});

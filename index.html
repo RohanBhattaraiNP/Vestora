@@ -247,7 +247,8 @@
             </div>
         </div>
     </section>
-    <!-- Dashboard Preview 
+
+    <!-- Dashboard Section -->
     <section class="dashboard-preview">
         <div class="container">
             <h2>Experience the <span class="highlight">Platform</span></h2>
@@ -260,10 +261,10 @@
                     <div class="tab" data-tab="trade">Trade</div>
                     <div class="tab" data-tab="orders">Orders</div>
                     <div class="tab" data-tab="deposit">Deposit</div>
-                    <div class="tab" data-tab="analytics">Analytics</div>
+                    <div class="tab" data-tab="wallet">Wallet</div>
                 </div>
 
-               
+                <!-- Portfolio Tab -->
                 <div class="dashboard-content active" id="portfolio-tab">
                     <div class="portfolio-overview">
                         <div class="portfolio-card">
@@ -282,10 +283,59 @@
                             <div class="change positive">+4.8%</div>
                         </div>
                     </div>
-                    
+
+                    <div class="portfolio-holdings">
+                        <h3>Your Holdings</h3>
+                        <table class="holdings-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Name</th>
+                                    <th>Shares</th>
+                                    <th>Avg. Price</th>
+                                    <th>Current Price</th>
+                                    <th>Market Value</th>
+                                    <th>P&L</th>
+                                    <th>% Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AAPL</td>
+                                    <td>Apple Inc.</td>
+                                    <td>15</td>
+                                    <td>$175.32</td>
+                                    <td>$182.50</td>
+                                    <td>$2,737.50</td>
+                                    <td class="positive">+$107.70</td>
+                                    <td class="positive">+4.1%</td>
+                                </tr>
+                                <tr>
+                                    <td>MSFT</td>
+                                    <td>Microsoft Corp.</td>
+                                    <td>10</td>
+                                    <td>$325.45</td>
+                                    <td>$342.78</td>
+                                    <td>$3,427.80</td>
+                                    <td class="positive">+$173.30</td>
+                                    <td class="positive">+5.3%</td>
+                                </tr>
+                                <tr>
+                                    <td>TSLA</td>
+                                    <td>Tesla Inc.</td>
+                                    <td>8</td>
+                                    <td>$245.80</td>
+                                    <td>$238.45</td>
+                                    <td>$1,907.60</td>
+                                    <td class="negative">-$58.80</td>
+                                    <td class="negative">-3.0%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-             
+                <!-- Trade Tab -->
                 <div class="dashboard-content" id="trade-tab">
                     <div class="trade-container">
                         <div class="trade-sidebar">
@@ -293,106 +343,548 @@
                             <form class="trade-form">
                                 <div class="form-group">
                                     <label>Symbol</label>
-                                    <input type="text" placeholder="Enter stock symbol">
+                                    <input type="text" placeholder="Enter stock symbol" value="AAPL">
                                 </div>
                                 <div class="form-group">
                                     <label>Order Type</label>
                                     <select>
                                         <option>Market</option>
-                                        <option>Limit</option>
+                                        <option selected>Limit</option>
                                         <option>Stop</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input type="number" min="1">
+                                    <label>Side</label>
+                                    <div class="side-selector">
+                                        <button type="button" class="side-btn buy active">Buy</button>
+                                        <button type="button" class="side-btn sell">Sell</button>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Price</label>
-                                    <input type="number" step="0.01">
+                                    <label>Quantity</label>
+                                    <input type="number" min="1" value="10">
                                 </div>
-                                <button class="btn-primary" style="width: 100%;">Place Order</button>
+                                <div class="form-group">
+                                    <label>Price ($)</label>
+                                    <input type="number" step="0.01" value="182.50">
+                                </div>
+                                <div class="form-group">
+                                    <label>Total</label>
+                                    <div class="total-value">$1,825.00</div>
+                                </div>
+                                <button type="button" class="btn-primary">Place Order</button>
                             </form>
                         </div>
                         <div class="trade-chart">
+                            <div class="chart-header">
+                                <div class="stock-info">
+                                    <h3>AAPL - Apple Inc.</h3>
+                                    <div class="stock-price">$182.50 <span class="change positive">+1.25 (0.69%)</span>
+                                    </div>
+                                </div>
+                                <div class="chart-controls">
+                                    <div class="timeframe-selector">
+                                        <button class="timeframe-btn">1D</button>
+                                        <button class="timeframe-btn active">1W</button>
+                                        <button class="timeframe-btn">1M</button>
+                                        <button class="timeframe-btn">3M</button>
+                                        <button class="timeframe-btn">1Y</button>
+                                    </div>
+                                </div>
+                            </div>
                             <div id="stock-chart"></div>
                         </div>
                     </div>
                 </div>
 
-      
+                <!-- Orders Tab with Market Orders -->
                 <div class="dashboard-content" id="orders-tab">
                     <div class="orders-container">
-                        <div class="orders-header">
-                            <h3>Open Orders</h3>
-                            <select>
-                                <option>All Orders</option>
-                                <option>Pending</option>
-                                <option>Filled</option>
-                            </select>
+                        <div class="orders-tabs">
+                            <div class="orders-tab active" data-orders="your">Your Orders</div>
+                            <div class="orders-tab" data-orders="market">Market Orders</div>
                         </div>
-                        <table class="orders-table">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Symbol</th>
-                                    <th>Type</th>
-                                    <th>Side</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2024-03-15 14:30</td>
-                                    <td>AAPL</td>
-                                    <td>Limit</td>
-                                    <td>Buy</td>
-                                    <td>$182.50</td>
-                                    <td>10</td>
-                                    <td><span class="status-badge status-pending">Pending</span></td>
-                                    <td><button class="btn-text">Cancel</button></td>
-                                </tr>
-                          
-                            </tbody>
-                        </table>
+
+                        <div class="orders-content active" id="your-orders">
+                            <div class="orders-header">
+                                <h3>Your Open Orders</h3>
+                                <button class="btn-outline">Cancel All</button>
+                            </div>
+
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Type</th>
+                                        <th>Side</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>AAPL</td>
+                                        <td>Limit</td>
+                                        <td class="side buy">Buy</td>
+                                        <td>10</td>
+                                        <td>$180.00</td>
+                                        <td>$1,800.00</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>2024-03-15 10:23</td>
+                                        <td><button class="btn-sm btn-cancel">Cancel</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TSLA</td>
+                                        <td>Limit</td>
+                                        <td class="side sell">Sell</td>
+                                        <td>5</td>
+                                        <td>$250.00</td>
+                                        <td>$1,250.00</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>2024-03-15 09:45</td>
+                                        <td><button class="btn-sm btn-cancel">Cancel</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="orders-header">
+                                <h3>Order History</h3>
+                            </div>
+
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Type</th>
+                                        <th>Side</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>MSFT</td>
+                                        <td>Market</td>
+                                        <td class="side buy">Buy</td>
+                                        <td>5</td>
+                                        <td>$342.78</td>
+                                        <td>$1,713.90</td>
+                                        <td><span class="status-badge status-filled">Filled</span></td>
+                                        <td>2024-03-14 14:32</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GOOGL</td>
+                                        <td>Limit</td>
+                                        <td class="side buy">Buy</td>
+                                        <td>8</td>
+                                        <td>$137.50</td>
+                                        <td>$1,100.00</td>
+                                        <td><span class="status-badge status-filled">Filled</span></td>
+                                        <td>2024-03-13 11:05</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AMZN</td>
+                                        <td>Limit</td>
+                                        <td class="side sell">Sell</td>
+                                        <td>3</td>
+                                        <td>$130.25</td>
+                                        <td>$390.75</td>
+                                        <td><span class="status-badge status-filled">Filled</span></td>
+                                        <td>2024-03-12 15:47</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="orders-content" id="market-orders">
+                            <div class="orders-header">
+                                <h3>Available Market Orders</h3>
+                                <div class="filter-container">
+                                    <select class="filter-select">
+                                        <option value="all">All Symbols</option>
+                                        <option value="AAPL">AAPL</option>
+                                        <option value="MSFT">MSFT</option>
+                                        <option value="GOOGL">GOOGL</option>
+                                        <option value="AMZN">AMZN</option>
+                                        <option value="TSLA">TSLA</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="market-orders-container">
+                                <div class="market-orders-section">
+                                    <h4>Buy Orders</h4>
+                                    <table class="market-orders-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Symbol</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>AAPL</td>
+                                                <td>$180.00</td>
+                                                <td>25</td>
+                                                <td>$4,500.00</td>
+                                                <td><button class="btn-sm btn-sell">Sell</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>MSFT</td>
+                                                <td>$340.50</td>
+                                                <td>10</td>
+                                                <td>$3,405.00</td>
+                                                <td><button class="btn-sm btn-sell">Sell</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>GOOGL</td>
+                                                <td>$137.25</td>
+                                                <td>15</td>
+                                                <td>$2,058.75</td>
+                                                <td><button class="btn-sm btn-sell">Sell</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>AMZN</td>
+                                                <td>$129.75</td>
+                                                <td>12</td>
+                                                <td>$1,557.00</td>
+                                                <td><button class="btn-sm btn-sell">Sell</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="market-orders-section">
+                                    <h4>Sell Orders</h4>
+                                    <table class="market-orders-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Symbol</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>AAPL</td>
+                                                <td>$182.75</td>
+                                                <td>18</td>
+                                                <td>$3,289.50</td>
+                                                <td><button class="btn-sm btn-buy">Buy</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>MSFT</td>
+                                                <td>$343.25</td>
+                                                <td>8</td>
+                                                <td>$2,746.00</td>
+                                                <td><button class="btn-sm btn-buy">Buy</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>GOOGL</td>
+                                                <td>$138.50</td>
+                                                <td>20</td>
+                                                <td>$2,770.00</td>
+                                                <td><button class="btn-sm btn-buy">Buy</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>TSLA</td>
+                                                <td>$248.75</td>
+                                                <td>5</td>
+                                                <td>$1,243.75</td>
+                                                <td><button class="btn-sm btn-buy">Buy</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-            
+                <!-- Deposit Tab with Enhanced UI -->
                 <div class="dashboard-content" id="deposit-tab">
                     <div class="deposit-container">
                         <div class="deposit-card">
                             <h3>Deposit USDC</h3>
-                            <div class="deposit-form">
-                                <label>Amount (USDC)</label>
-                                <input type="number" placeholder="Enter amount" min="1">
-                                <label>Your USDC Address</label>
-                                <input type="text" placeholder="Enter your USDC address">
-                                <button class="btn-primary" style="width: 100%;">Deposit USDC</button>
+                            <div class="deposit-methods">
+                                <div class="deposit-method-tab active" data-method="crypto">
+                                    <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC">
+                                    <span>Crypto</span>
+                                </div>
+                                <div class="deposit-method-tab" data-method="bank">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt="Bank">
+                                    <span>Bank Transfer</span>
+                                </div>
+                                <div class="deposit-method-tab" data-method="card">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Card">
+                                    <span>Credit Card</span>
+                                </div>
+                            </div>
+
+                            <div class="deposit-method-content active" id="crypto-method">
+                                <div class="deposit-form">
+                                    <label>Amount (USDC)</label>
+                                    <input type="number" placeholder="Enter amount" min="1" value="1000">
+
+                                    <label>Select Deposit Method</label>
+                                    <div class="deposit-options">
+                                        <div class="deposit-option selected">
+                                            <input type="radio" name="deposit-speed" id="instant"
+                                                class="deposit-option-radio" checked>
+                                            <div class="deposit-option-icon">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/6941/6941697.png"
+                                                    alt="Instant">
+                                            </div>
+                                            <div class="deposit-option-details">
+                                                <div class="deposit-option-title">Instant Deposit</div>
+                                                <div class="deposit-option-description">Funds available immediately
+                                                </div>
+                                            </div>
+                                            <div class="deposit-option-fee">0.1% fee</div>
+                                        </div>
+                                        <div class="deposit-option">
+                                            <input type="radio" name="deposit-speed" id="standard"
+                                                class="deposit-option-radio">
+                                            <div class="deposit-option-icon">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/2972/2972531.png"
+                                                    alt="Standard">
+                                            </div>
+                                            <div class="deposit-option-details">
+                                                <div class="deposit-option-title">Standard Deposit</div>
+                                                <div class="deposit-option-description">Funds available in 1-3 days
+                                                </div>
+                                            </div>
+                                            <div class="deposit-option-fee">No fee</div>
+                                        </div>
+                                    </div>
+
+                                    <label>Your USDC Address</label>
+                                    <div class="address-input">
+                                        <input type="text" value="0x1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t" readonly>
+                                        <button class="btn-icon" title="Copy address"><i
+                                                class="fas fa-copy"></i></button>
+                                    </div>
+
+                                    <div class="supported-networks">
+                                        <span>Supported Networks:</span>
+                                        <div class="network-icons">
+                                            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum"
+                                                title="Ethereum">
+                                            <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon"
+                                                title="Polygon">
+                                            <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png"
+                                                alt="Avalanche" title="Avalanche">
+                                            <img src="https://cryptologos.cc/logos/arbitrum-arb-logo.png" alt="Arbitrum"
+                                                title="Arbitrum">
+                                        </div>
+                                    </div>
+
+                                    <button class="btn-primary" style="width: 100%; margin-top: 20px;">Deposit
+                                        Funds</button>
+                                </div>
+                            </div>
+
+                            <div class="deposit-method-content" id="bank-method">
+                                <div class="deposit-form">
+                                    <label>Amount (USD)</label>
+                                    <input type="number" placeholder="Enter amount" min="1" value="1000">
+
+                                    <label>Select Bank</label>
+                                    <div class="bank-selection">
+                                        <div class="bank-option">
+                                            <img src="https://logo.clearbit.com/chase.com" alt="Chase"
+                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/4616/4616089.png'">
+                                            <span>Chase</span>
+                                        </div>
+                                        <div class="bank-option">
+                                            <img src="https://logo.clearbit.com/bankofamerica.com" alt="Bank of America"
+                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/2164/2164656.png'">
+                                            <span>Bank of America</span>
+                                        </div>
+                                        <div class="bank-option">
+                                            <img src="https://logo.clearbit.com/wellsfargo.com" alt="Wells Fargo"
+                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968416.png'">
+                                            <span>Wells Fargo</span>
+                                        </div>
+                                        <div class="bank-option">
+                                            <img src="https://logo.clearbit.com/citibank.com" alt="Citibank"
+                                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968404.png'">
+                                            <span>Citibank</span>
+                                        </div>
+                                        <div class="bank-option add-new">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>Add New Bank</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="deposit-timing">
+                                        <div class="timing-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="timing-details">
+                                            <div class="timing-title">Processing Time</div>
+                                            <div class="timing-description">1-3 business days</div>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn-primary" style="width: 100%; margin-top: 20px;">Continue to
+                                        Bank</button>
+                                </div>
+                            </div>
+
+                            <div class="deposit-method-content" id="card-method">
+                                <div class="deposit-form">
+                                    <label>Amount (USD)</label>
+                                    <input type="number" placeholder="Enter amount" min="1" value="1000">
+
+                                    <label>Card Information</label>
+                                    <div class="card-input">
+                                        <div class="card-icons">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png"
+                                                alt="Mastercard">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/196/196539.png" alt="Amex">
+                                        </div>
+                                        <input type="text" placeholder="Card Number">
+                                    </div>
+
+                                    <div class="card-details">
+                                        <input type="text" placeholder="MM/YY">
+                                        <input type="text" placeholder="CVC">
+                                    </div>
+
+                                    <div class="card-name">
+                                        <input type="text" placeholder="Cardholder Name">
+                                    </div>
+
+                                    <div class="fee-notice">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>A 3% fee applies to credit card deposits</span>
+                                    </div>
+
+                                    <button class="btn-primary" style="width: 100%; margin-top: 20px;">Pay Now</button>
+                                </div>
                             </div>
                         </div>
+
                         <div class="deposit-card">
                             <h3>Recent Transactions</h3>
                             <div class="transaction-list">
-                                
+                                <div class="transaction">
+                                    <div class="transaction-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-title">USDC Deposit</div>
+                                        <div class="transaction-date">2024-03-14 09:23</div>
+                                    </div>
+                                    <div class="transaction-amount">+1,000 USDC</div>
+                                    <div class="transaction-status completed">Completed</div>
+                                </div>
+                                <div class="transaction">
+                                    <div class="transaction-icon withdraw"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-title">USDC Withdrawal</div>
+                                        <div class="transaction-date">2024-03-10 15:47</div>
+                                    </div>
+                                    <div class="transaction-amount">-500 USDC</div>
+                                    <div class="transaction-status completed">Completed</div>
+                                </div>
+                                <div class="transaction">
+                                    <div class="transaction-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-title">USDC Deposit</div>
+                                        <div class="transaction-date">2024-03-05 11:32</div>
+                                    </div>
+                                    <div class="transaction-amount">+2,500 USDC</div>
+                                    <div class="transaction-status completed">Completed</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-               
-                <div class="dashboard-content" id="analytics-tab">
-                    <div class="analytics-container">
-                       
+                <!-- Wallet Tab -->
+                <div class="dashboard-content" id="wallet-tab">
+                    <div class="wallet-container">
+                        <div class="wallet-overview">
+                            <div class="wallet-card main">
+                                <h3>USDC Balance</h3>
+                                <div class="wallet-balance">5,234.89 USDC</div>
+                                <div class="wallet-actions">
+                                    <button class="btn-primary">Deposit</button>
+                                    <button class="btn-secondary">Withdraw</button>
+                                </div>
+                            </div>
+                            <div class="wallet-card">
+                                <h3>Connected Wallet</h3>
+                                <div class="wallet-address">
+                                    <i class="fas fa-wallet"></i>
+                                    <span>0x7a2...f9e3</span>
+                                    <span class="wallet-badge">Ethereum</span>
+                                </div>
+                                <button class="btn-outline">Disconnect</button>
+                            </div>
+                        </div>
+                        <div class="wallet-assets">
+                            <h3>Your Assets</h3>
+                            <table class="assets-table">
+                                <thead>
+                                    <tr>
+                                        <th>Asset</th>
+                                        <th>Balance</th>
+                                        <th>Value (USD)</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="asset-info">
+                                                <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"
+                                                    alt="USDC">
+                                                <span>USDC</span>
+                                            </div>
+                                        </td>
+                                        <td>5,234.89</td>
+                                        <td>$5,234.89</td>
+                                        <td>
+                                            <button class="btn-sm">Deposit</button>
+                                            <button class="btn-sm">Withdraw</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="asset-info">
+                                                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">
+                                                <span>ETH</span>
+                                            </div>
+                                        </td>
+                                        <td>0.25</td>
+                                        <td>$750.25</td>
+                                        <td>
+                                            <button class="btn-sm">Deposit</button>
+                                            <button class="btn-sm">Withdraw</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
--->
 
     <section id="about" class="about">
         <div class="container">
