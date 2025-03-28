@@ -1866,3 +1866,94 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// Simple and reliable filtering functionality
+document.addEventListener('DOMContentLoaded', function () {
+    // Region tab filtering
+    const regionTabs = document.querySelectorAll('.region-tab');
+
+    regionTabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            // Remove active class from all tabs
+            regionTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Get selected region
+            const region = this.getAttribute('data-region');
+
+            // Filter rows based on region
+            filterRows('region', region);
+        });
+    });
+
+    // Sector filtering
+    const sectorSelect = document.querySelector('select[name="sector"]');
+    if (sectorSelect) {
+        sectorSelect.addEventListener('change', function () {
+            const sector = this.value;
+            filterRows('sector', sector);
+        });
+    }
+
+    // Function to filter rows based on attribute and value
+    function filterRows(attribute, value) {
+        const rows = document.querySelectorAll('.market-table tbody tr');
+
+        rows.forEach(row => {
+            // Show all rows if "all" is selected
+            if (value === 'all') {
+                row.style.display = '';
+                return;
+            }
+
+            if (attribute === 'region') {
+                // Filter by region
+                const regionSpan = row.querySelector('.region');
+                if (regionSpan && regionSpan.classList.contains(value)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            } else if (attribute === 'sector') {
+                // Filter by sector
+                const rowSector = row.getAttribute('data-sector');
+                if (rowSector === value) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // Search functionality
+    const searchInput = document.querySelector('.market-search input');
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase();
+
+            if (searchTerm === '') {
+                // If search is empty, reset to show all rows
+                const rows = document.querySelectorAll('.market-table tbody tr');
+                rows.forEach(row => {
+                    row.style.display = '';
+                });
+                return;
+            }
+
+            // Filter rows based on search term
+            const rows = document.querySelectorAll('.market-table tbody tr');
+            rows.forEach(row => {
+                const symbol = row.querySelector('td:first-child').textContent.toLowerCase();
+                const name = row.querySelector('.asset-info span').textContent.toLowerCase();
+
+                if (symbol.includes(searchTerm) || name.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    }
+});
