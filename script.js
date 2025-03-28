@@ -53,22 +53,89 @@ const formMessage = document.getElementById('form-message');
 if (waitlistForm) {
     waitlistForm.addEventListener('submit', function (e) {
         e.preventDefault();
+
         const email = document.getElementById('email').value;
+        const submitButton = waitlistForm.querySelector('button[type="submit"]');
 
-        // Simple validation
-        if (!email || !email.includes('@')) {
-            formMessage.textContent = 'Please enter a valid email address.';
-            formMessage.className = 'error';
-            return;
-        }
+        // Disable button during submission
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
 
-        // Simulate form submission
-        formMessage.textContent = 'Thank you for joining our waitlist! We\'ll be in touch soon.';
-        formMessage.className = 'success';
-        waitlistForm.reset();
+        // Form submission using fetch API
+        fetch(waitlistForm.action, {
+            method: 'POST',
+            body: new FormData(waitlistForm),
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                // Success message
+                formMessage.innerHTML = '<p class="success-message">Thank you for joining our waitlist! We\'ll be in touch soon.</p>';
+                waitlistForm.reset();
 
-        // In a real application, you would send this data to your server
+                // Track conversion for SEO
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'waitlist_signup', {
+                        'event_category': 'engagement',
+                        'event_label': 'waitlist'
+                    });
+                }
+
+                // Store in localStorage to show personalized message on return
+                localStorage.setItem('waitlistSignup', 'true');
+                localStorage.setItem('waitlistEmail', email);
+            })
+            .catch(error => {
+                // Error message
+                formMessage.innerHTML = '<p class="error-message">Oops! Something went wrong. Please try again or contact us directly.</p>';
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Join Waitlist';
+            });
     });
+}
+
+// Check if user previously signed up
+if (localStorage.getItem('waitlistSignup') === 'true') {
+    const email = localStorage.getItem('waitlistEmail');
+    const waitlistSection = document.getElementById('waitlist');
+
+    if (waitlistSection) {
+        const container = waitlistSection.querySelector('.container');
+        const existingForm = waitlistSection.querySelector('#waitlist-form');
+
+        if (existingForm && container) {
+            // Replace form with personalized message
+            const thankYouMessage = document.createElement('div');
+            thankYouMessage.className = 'thank-you-message';
+            thankYouMessage.innerHTML = `
+                <h3>Thank You for Joining Our Waitlist!</h3>
+                <p>We've received your email (${email}) and will notify you when we launch.</p>
+                <p>Want to increase your chances of early access? Share Vestora Finance with others:</p>
+                <div class="social-share">
+                    <a href="https://twitter.com/intent/tweet?text=I%20just%20joined%20the%20waitlist%20for%20Vestora%20Finance%2C%20a%20revolutionary%20decentralized%20stock%20exchange.%20Join%20me!&url=https://vestora.finance" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i> Share on Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://vestora.finance" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> Share on LinkedIn
+                    </a>
+                </div>
+            `;
+
+            // Replace form with thank you message
+            container.replaceChild(thankYouMessage, existingForm);
+        }
+    }
 }
 
 // 3D cube animation enhancement
@@ -778,29 +845,188 @@ function hideToast(toast) {
     }, 300);
 }
 
-// Add this to optimize performance
+// Advanced SEO Performance Optimization
+
+// Core Web Vitals & User Experience Optimization
 document.addEventListener('DOMContentLoaded', function () {
-    // Defer loading of non-critical scripts
+    // Deferred loading of non-critical resources
     setTimeout(function () {
-        const deferredScripts = ['analytics.js', 'non-critical.js'];
+        // Load non-critical CSS
+        const deferredStyles = document.createElement('link');
+        deferredStyles.rel = 'stylesheet';
+        deferredStyles.href = 'non-critical.css';
+        document.head.appendChild(deferredStyles);
+
+        // Load non-critical scripts
+        const deferredScripts = [
+            'analytics.js',
+            'https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js'
+        ];
+
         deferredScripts.forEach(script => {
             const scriptEl = document.createElement('script');
             scriptEl.src = script;
             document.body.appendChild(scriptEl);
         });
-    }, 3000);
+    }, 2000);
+
+    // Initialize intersection observer for lazy loading
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers without intersection observer
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+        });
+    }
+
+    // Add schema markup dynamically based on content
+    addDynamicSchema();
+
+    // Track user engagement for SEO signals
+    trackUserEngagement();
+
+    // Optimize for Core Web Vitals
+    optimizeCoreWebVitals();
 });
 
-// Add page preloading
-const preloadLinks = [
-    { rel: 'preload', href: 'tokenization.png', as: 'image' },
-    { rel: 'preload', href: 'style.css', as: 'style' }
-];
+// Schema enhancement based on page content
+function addDynamicSchema() {
+    // Create organization schema
+    const orgSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Vestora Finance",
+        "url": "https://vestora.finance",
+        "logo": "https://vestora.finance/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@vestora.fi",
+            "contactType": "customer service"
+        }
+    };
 
-preloadLinks.forEach(link => {
-    const linkEl = document.createElement('link');
-    linkEl.rel = link.rel;
-    linkEl.href = link.href;
-    linkEl.as = link.as;
-    document.head.appendChild(linkEl);
-});
+    // Add schema to page
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(orgSchema);
+    document.head.appendChild(script);
+}
+
+// Track user engagement metrics
+function trackUserEngagement() {
+    // Record time on page
+    let startTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+        const timeOnPage = (Date.now() - startTime) / 1000;
+        // Send to analytics (would implement actual analytics call here)
+        console.log(`Time on page: ${timeOnPage} seconds`);
+    });
+
+    // Track scroll depth
+    let maxScroll = 0;
+    document.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight;
+        const winHeight = window.innerHeight;
+        const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+
+        if (scrollPercent > maxScroll) {
+            maxScroll = scrollPercent;
+        }
+    });
+}
+
+// Optimize for Core Web Vitals
+function optimizeCoreWebVitals() {
+    // Optimize Largest Contentful Paint (LCP)
+    document.querySelectorAll('.hero-content, .hero-image').forEach(el => {
+        el.style.contentVisibility = 'auto';
+    });
+
+    // Optimize First Input Delay (FID)
+    const longTasks = [];
+    const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+            longTasks.push({
+                name: entry.name,
+                duration: entry.duration,
+                startTime: entry.startTime
+            });
+        }
+    });
+
+    observer.observe({ entryTypes: ['longtask'] });
+
+    // Optimize Cumulative Layout Shift (CLS)
+    document.querySelectorAll('img').forEach(img => {
+        if (img.complete) return;
+
+        img.style.aspectRatio = img.width / img.height;
+    });
+}
+
+// Add structured URLs for SEO
+function addCanonicalLinksToDOM() {
+    // Get current URL segments
+    const path = window.location.pathname;
+    const segments = path.split('/').filter(segment => segment.length > 0);
+
+    // Build breadcrumb data
+    if (segments.length > 0) {
+        const breadcrumbData = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": []
+        };
+
+        let currentPath = '';
+
+        // Add home
+        breadcrumbData.itemListElement.push({
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": window.location.origin
+        });
+
+        // Add each path segment
+        segments.forEach((segment, index) => {
+            currentPath += `/${segment}`;
+            breadcrumbData.itemListElement.push({
+                "@type": "ListItem",
+                "position": index + 2,
+                "name": segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+                "item": `${window.location.origin}${currentPath}`
+            });
+        });
+
+        // Add breadcrumb schema
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(breadcrumbData);
+        document.head.appendChild(script);
+    }
+}
+
+// Call when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addCanonicalLinksToDOM);
+} else {
+    addCanonicalLinksToDOM();
+}

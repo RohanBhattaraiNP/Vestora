@@ -754,8 +754,60 @@ nav .btn-primary:hover {
 }
 
 #form-message {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.success-message {
+    color: #36b37e;
+    background-color: rgba(54, 179, 126, 0.1);
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.error-message {
+    color: #ff5630;
+    background-color: rgba(255, 86, 48, 0.1);
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.thank-you-message {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 82, 204, 0.05);
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.social-share {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     margin-top: 20px;
-    min-height: 20px;
+}
+
+.social-share a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.social-share a:hover {
+    background: var(--darker-color);
+    transform: translateY(-2px);
+}
+
+.social-share i {
+    margin-right: 8px;
 }
 
 /* Updated Contact Section with blue background */
